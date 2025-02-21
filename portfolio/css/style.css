@@ -255,7 +255,6 @@ h5 {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 999;
 }
 .container .tonbo img:nth-of-type(3) {
   position: absolute;
