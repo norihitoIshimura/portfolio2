@@ -321,7 +321,7 @@ h5 {
   font-family: "Zen Kaku Gothic New", serif;
   font-weight: 700;
   font-style: normal;
-  letter-spacing: 11rem;
+  letter-spacing: 9rem;
 }
 @media screen and (max-width: 580px) {
   .container .box #inMyHead {
