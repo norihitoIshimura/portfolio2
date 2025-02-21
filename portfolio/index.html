@@ -964,16 +964,6 @@
       function closePopup() {
         document.getElementById("popup-content").style.display = "none";
         document.getElementById("blur").classList.remove("blur"); // ブラー効果を削除
-
-        // ポップアップを開いた際の、tonbo、position:bottomのズレ調整用
-        const image = document.querySelector(".tonbo img:nth-of-type(6)");
-        if (image) {
-          image.style.bottom = "-40px";
-        }
-        const image2 = document.querySelector(".tonbo img:nth-of-type(7)");
-        if (image2) {
-          image2.style.bottom = "-40px";
-        }
       }
     </script>
   </body>
