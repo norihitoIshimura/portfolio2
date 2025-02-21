@@ -902,7 +902,7 @@
             trigger: ".work-illust",
             start: "top 60%",
             end: "top 10%",
-            // scrub: true, // スクロールに合わせて動かす
+            scrub: true, // スクロールに合わせて動かす
             onUpdate: (self) => {
               const progress = self.progress;
               let scale = 1 - progress * 0.5;
@@ -928,7 +928,7 @@
             start: "top 80%", // 画面中央で開始
             end: "top 0%", // 画面中央で終了
             scrub: true,
-            markers: true,
+            // markers: true,
             onEnter: () => {
               const windowWidth = window.innerWidth;
               const scaleValue = windowWidth <= 580 ? 3 : 5; // 580px以下なら3倍、それ以上なら5倍
