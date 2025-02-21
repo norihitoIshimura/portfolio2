@@ -258,7 +258,7 @@ h5 {
   position: absolute;
   bottom: 52px !important;
   right: -25px !important;
-  z-index: 11;
+  z-index: 999;
   pointer-events: all !important;
   display: flex;
   flex-direction: column;
@@ -269,7 +269,7 @@ h5 {
   }
 }
 .container .tonbo .cmyk button {
-  height: 13px !important;
+  min-height: 13px !important;
   width: 13px !important;
   margin-bottom: 4px;
   border: none;
