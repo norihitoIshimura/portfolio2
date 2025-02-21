@@ -955,11 +955,6 @@ h5 {
   flex-direction: column;
   justify-content: end;
 }
-@media screen and (max-width: 580px) {
-  .container footer {
-    height: 50vh;
-  }
-}
 
 /* ポップアップ全体のスタイル */
 #popup-content {
