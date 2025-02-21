@@ -241,7 +241,7 @@ h5 {
   position: fixed;
   top: 0;
   width: calc(100% - 72px);
-  height: 100vh;
+  height: 100%;
   z-index: 4;
   pointer-events: none;
 }
