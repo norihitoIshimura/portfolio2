@@ -202,41 +202,6 @@ h5 {
   letter-spacing: 0.1rem;
   width: 3rem;
 }
-.container .cmyk {
-  position: fixed;
-  bottom: 52px;
-  right: 8px;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-}
-.container .cmyk button {
-  padding: 8px;
-  margin-bottom: 4px;
-  border: none;
-  cursor: pointer;
-}
-.container .cmyk button:last-child {
-  padding: 6px;
-  height: 16px;
-  border: 1px solid #bbb;
-  margin-bottom: 0;
-}
-.container .cmyk .cyan {
-  background-color: cyan;
-}
-.container .cmyk .magenta {
-  background-color: magenta;
-}
-.container .cmyk .yellow {
-  background-color: yellow;
-}
-.container .cmyk .black {
-  background-color: black;
-}
-.container .cmyk .white {
-  background-color: #fff;
-}
 .container .tonbo {
   position: fixed;
   top: 0;
@@ -288,6 +253,41 @@ h5 {
   position: absolute;
   bottom: 0;
   right: -36px;
+}
+.container .tonbo .cmyk {
+  position: absolute;
+  bottom: 52px;
+  right: 8px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+.container .tonbo .cmyk button {
+  padding: 8px;
+  margin-bottom: 4px;
+  border: none;
+  cursor: pointer;
+}
+.container .tonbo .cmyk button:last-child {
+  padding: 6px;
+  height: 16px;
+  border: 1px solid #bbb;
+  margin-bottom: 0;
+}
+.container .tonbo .cmyk .cyan {
+  background-color: cyan;
+}
+.container .tonbo .cmyk .magenta {
+  background-color: magenta;
+}
+.container .tonbo .cmyk .yellow {
+  background-color: yellow;
+}
+.container .tonbo .cmyk .black {
+  background-color: black;
+}
+.container .tonbo .cmyk .white {
+  background-color: #fff;
 }
 .container .top {
   width: auto;
