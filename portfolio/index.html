@@ -926,10 +926,10 @@
           ScrollTrigger.create({
             trigger: "#end",
             start: "top 50%",
-            end: "top 50%", // start と end を同じ位置に設定
+            end: "top 10%", // アニメーションの終了位置を少し下げることで、より中央に止まるように調整
             scrub: 1,
-            toggleActions: "play none none reverse",
-            invalidateOnRefresh: true, // リフレッシュ時に状態をリセット
+            toggleActions: "play none none reverse", // 逆方向に戻す動作
+            invalidateOnRefresh: true,
             onEnter: () => {
               const windowWidth = window.innerWidth;
               const scaleValue = windowWidth <= 580 ? 3 : 5; // 580px以下なら3倍、それ以上なら5倍
