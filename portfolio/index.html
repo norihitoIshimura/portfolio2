@@ -70,14 +70,18 @@
         <img src="img/t06.png" alt="" />
         <img src="img/t07.png" alt="" />
         <img src="img/t08.png" alt="" />
+        <div class="cmyk">
+          <button class="cyan" onclick="changeBackground('#CCFFFF')"></button>
+          <button
+            class="magenta"
+            onclick="changeBackground('#FFE0FF')"
+          ></button>
+          <button class="yellow" onclick="changeBackground('#FFFFCC')"></button>
+          <button class="black" onclick="changeBackground('#bbb')"></button>
+          <button class="white" onclick="changeBackground('#fff')"></button>
+        </div>
       </div>
-      <div class="cmyk">
-        <button class="cyan" onclick="changeBackground('#CCFFFF')"></button>
-        <button class="magenta" onclick="changeBackground('#FFE0FF')"></button>
-        <button class="yellow" onclick="changeBackground('#FFFFCC')"></button>
-        <button class="black" onclick="changeBackground('#bbb')"></button>
-        <button class="white" onclick="changeBackground('#fff')"></button>
-      </div>
+
       <section class="top">
         <h3>PORTFOLIO IN MY HEAD</h3>
         <div class="box">
@@ -925,8 +929,8 @@
           // 2つ目のスクロールトリガー
           ScrollTrigger.create({
             trigger: "#end", // トリガーとなる要素
-            start: "top 80%", // 画面中央で開始
-            end: "top 0%", // 画面中央で終了
+            start: "top 50%", // 画面中央で開始
+            end: "top 0%", // 画面トップで終了
             scrub: true,
             // markers: true,
             onEnter: () => {
