@@ -321,7 +321,7 @@ h5 {
 @media screen and (max-width: 580px) {
   .container .box #inMyHead {
     letter-spacing: 1.5rem;
-    font-size: 14rem;
+    font-size: 12rem;
     white-space: wrap;
     writing-mode: vertical-rl;
   }
