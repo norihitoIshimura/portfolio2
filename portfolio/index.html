@@ -926,16 +926,16 @@
           ScrollTrigger.create({
             trigger: "#end",
             start: "top 50%",
-            end: "top 0%",
+            end: "top 50%", // start と end を同じ位置に設定
             scrub: 1,
-            toggleActions: "play none none reverse", // enter時にアニメーション開始、leave時に逆再生
+            toggleActions: "play none none reverse",
             invalidateOnRefresh: true, // リフレッシュ時に状態をリセット
             onEnter: () => {
               const windowWidth = window.innerWidth;
-              const scaleValue = windowWidth <= 580 ? 3 : 5;
+              const scaleValue = windowWidth <= 580 ? 3 : 5; // 580px以下なら3倍、それ以上なら5倍
 
               gsap.to(logo, {
-                duration: 0.15,
+                duration: 0.3,
                 scale: scaleValue,
                 top: "50%",
                 left: "50%",
@@ -944,14 +944,14 @@
                 rotation: "+=270",
                 transformOrigin: "50% 50%",
                 ease: "power2.out",
-                immediateRender: false, // 即時レンダリングを無効化して、スムーズに動作
+                immediateRender: false,
                 force3D: true,
               });
             },
 
             onLeaveBack: () => {
               gsap.to(logo, {
-                duration: 0.15,
+                duration: 0.3,
                 scale: 0.5,
                 top: "46px",
                 left: "-29px",
