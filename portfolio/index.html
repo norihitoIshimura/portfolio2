@@ -885,28 +885,24 @@
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // 最初の訪問かどうかを確認
         let moveDelay =
           sessionStorage.getItem("isFirstVisit") === null ? 9500 : 0;
 
-        // セッションに訪問記録を残す
         if (moveDelay === 9500) {
           sessionStorage.setItem("isFirstVisit", "false");
         }
 
-        // GSAP プラグインを登録
         gsap.registerPlugin(ScrollTrigger);
 
         const logo = document.getElementById("logo-container");
 
-        // 7500ms の遅延後にアニメーションを設定
         setTimeout(() => {
           // 1つ目のスクロールトリガー（通常の動き）
           ScrollTrigger.create({
             trigger: ".work-illust",
             start: "top 60%",
             end: "top 10%",
-            scrub: true, // スクロールに合わせて動かす
+            scrub: 1, // スクロールに合わせて動かすスピードを速く
             onUpdate: (self) => {
               const progress = self.progress;
               let scale = 1 - progress * 0.5;
@@ -914,28 +910,28 @@
               let top = 38 + progress * 8;
               let rotate = progress * 90;
 
-              // アニメーションのスピードを速くするためにdurationを小さく設定
               gsap.to(logo, {
-                duration: 0.03, // ここを更に小さくして速くする
+                duration: 0.03,
                 left: left,
                 top: top,
                 scale: scale,
                 rotation: rotate,
                 ease: "power2.inOut",
+                force3D: true, // GPUによるハードウェアアクセラレーションを有効化
               });
             },
           });
 
           // 2つ目のスクロールトリガー
           ScrollTrigger.create({
-            trigger: "#end", // トリガーとなる要素
-            start: "top 50%", // 画面中央で開始
-            end: "top 0%", // 画面トップで終了
-            scrub: 1,
-            // markers: true,
+            trigger: "#end",
+            start: "top 50%",
+            end: "top 0%",
+            scrub: 1, // スクロールに合わせて動かすスピードを速く
             onEnter: () => {
               const windowWidth = window.innerWidth;
-              const scaleValue = windowWidth <= 580 ? 3 : 5; // 580px以下なら3倍、それ以上なら5倍
+              const scaleValue = windowWidth <= 580 ? 3 : 5;
+
               gsap.to(logo, {
                 duration: 0.15,
                 scale: scaleValue,
@@ -943,23 +939,25 @@
                 left: "50%",
                 x: "-50%",
                 y: "-50%",
-                rotation: "+=270", // 累積回転
-                transformOrigin: "50% 50%", // 明示的に指定
+                rotation: "+=270",
+                transformOrigin: "50% 50%",
                 ease: "power2.out",
+                force3D: true, // GPUによるハードウェアアクセラレーションを有効化
               });
             },
 
             onLeaveBack: () => {
               gsap.to(logo, {
                 duration: 0.15,
-                scale: 0.5, // 元のサイズに戻す
+                scale: 0.5,
                 top: "46px",
                 left: "-29px",
                 x: "0%",
                 y: "0%",
-                rotation: 0, // 元の角度に戻す
+                rotation: 0,
                 ease: "power2.out",
                 rotation: 90,
+                force3D: true, // GPUによるハードウェアアクセラレーションを有効化
               });
             },
           });
