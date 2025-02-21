@@ -929,7 +929,7 @@
             end: "top 10%", // アニメーションの終了位置を少し下げることで、より中央に止まるように調整
             scrub: 1,
             toggleActions: "play none none reverse", // 逆方向に戻す動作
-            invalidateOnRefresh: true,
+            invalidateOnRefresh: true, // 画面リフレッシュ時に再計算を行う
             onEnter: () => {
               const windowWidth = window.innerWidth;
               const scaleValue = windowWidth <= 580 ? 3 : 5; // 580px以下なら3倍、それ以上なら5倍
