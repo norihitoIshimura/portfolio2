@@ -925,9 +925,10 @@
           // 2つ目のスクロールトリガー
           ScrollTrigger.create({
             trigger: "#end", // トリガーとなる要素
-            start: "top 100%", // 画面中央で開始
+            start: "top 80%", // 画面中央で開始
             end: "top 0%", // 画面中央で終了
             scrub: true,
+            markers: true,
             onEnter: () => {
               const windowWidth = window.innerWidth;
               const scaleValue = windowWidth <= 580 ? 3 : 5; // 580px以下なら3倍、それ以上なら5倍
