@@ -71,13 +71,13 @@
         <img src="img/t07.png" alt="" />
         <img src="img/t08.png" alt="" />
       </div>
-      <!-- <div class="cmyk">
+      <div class="cmyk">
         <button class="cyan" onclick="changeBackground('#CCFFFF')"></button>
         <button class="magenta" onclick="changeBackground('#FFE0FF')"></button>
         <button class="yellow" onclick="changeBackground('#FFFFCC')"></button>
         <button class="black" onclick="changeBackground('#bbb')"></button>
         <button class="white" onclick="changeBackground('#fff')"></button>
-      </div> -->
+      </div>
       <section class="top">
         <h3>PORTFOLIO IN MY HEAD</h3>
         <div class="box">
@@ -902,7 +902,7 @@
             trigger: ".work-illust",
             start: "top 60%",
             end: "top 10%",
-            scrub: true, // スクロールに合わせて動かす
+            // scrub: true, // スクロールに合わせて動かす
             onUpdate: (self) => {
               const progress = self.progress;
               let scale = 1 - progress * 0.5;
