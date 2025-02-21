@@ -704,25 +704,30 @@
         const originalText = text.textContent;
         text.textContent = ""; // 元のテキストを削除
 
-        // 元のテキストを1文字ずつspanタグでラップする
+        // 元のテキストを1文字ずつspanタグでラップ
         Array.from(originalText).forEach((char) => {
           const span = document.createElement("span");
           span.textContent = char;
           text.appendChild(span);
         });
 
-        // ランダムに動かす関数
+        // ランダムに動かす関数（波打つように動かす）
         function randomize() {
           const spans = document.querySelectorAll("#inMyHead h4 span");
-          spans.forEach((span) => {
+          const randomIndex = Math.floor(Math.random() * spans.length); // ランダムで1つの要素を選択
+
+          spans.forEach((span, index) => {
+            const waveEffect =
+              Math.sin((index / spans.length) * Math.PI * 2) * 10; // 波の揺れ
+
             gsap.to(span, {
-              x: () => Math.random() * 60 - 10, // ±10pxの小さなランダム位置
-              y: () => Math.random() * 60 - 10, // ±10pxの小さなランダム位置
-              rotation: () => Math.random() * 20 - 10, // ±10°回転（もっと控えめ）
-              scale: () => 1 + (Math.random() * 1.1 - 0.15), // 小さなランダムな拡大縮小
-              opacity: () => Math.random() * 0.6 + 0.1, // 透明度を0.9以上に抑える
-              duration: 3, // 動きがよりゆっくり
-              ease: "power1.inOut", // 動きがさらに滑らか
+              x: () => Math.random() * 120 - 10,
+              y: () => Math.random() * 120 - 10 + waveEffect, // 波の揺れを追加
+              rotation: () => Math.random() * 40 - 10,
+              scale: () => 1 + (Math.random() * 1.3 - 0.15),
+              opacity: index === randomIndex ? 1.0 : 0.3, // 選ばれた1つだけ濃く、それ以外は0.3
+              duration: 3,
+              ease: "power1.inOut",
             });
           });
 
@@ -776,18 +781,6 @@
           second: "2-digit",
           hour12: false,
         });
-
-        // 時間帯ごとのメッセージ
-        // let message = "";
-        // if (hour >= 5 && hour < 12) {
-        //   message = "おはようございます！";
-        // } else if (hour >= 12 && hour < 18) {
-        //   message = "こんにちは！";
-        // } else if (hour >= 18 && hour < 22) {
-        //   message = "こんばんは！";
-        // } else {
-        //   message = "夜更かしですね！";
-        // }
 
         // HTMLに表示
         document.getElementById(
@@ -866,21 +859,6 @@
             );
           });
         }, moveDelay);
-        // setTimeout(() => {
-        //   gsap.to(".opening.move", {
-        //     scrollTrigger: {
-        //       trigger: ".text", // 正しいセレクターに修正
-        //       start: "bottom 100%",
-        //       end: "bottom top",
-        //       scrub: true,
-        //       markers: true, // デバッグ用
-        //     },
-        //     top: "calc(38px + 200px)",
-        //     left: "calc(36px + 800px)",
-        //     rotation: 90,
-        //     ease: "none",
-        //   });
-        // }, moveDelay);
       });
     </script>
     <script>
