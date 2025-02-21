@@ -256,11 +256,17 @@ h5 {
 }
 .container .tonbo .cmyk {
   position: absolute;
-  bottom: 52px;
-  right: -28px !important;
-  z-index: 2;
+  bottom: 52px !important;
+  right: -27px !important;
+  z-index: 6;
+  pointer-events: all !important;
   display: flex;
   flex-direction: column;
+}
+@media screen and (max-width: 580px) {
+  .container .tonbo .cmyk {
+    bottom: 42px !important;
+  }
 }
 .container .tonbo .cmyk button {
   padding: 8px;
@@ -302,7 +308,7 @@ h5 {
   z-index: 1;
 }
 .container .box #inMyHead {
-  color: #555;
+  color: #777;
   width: 100%;
   height: calc(80vh - 36px);
   display: flex;
@@ -311,18 +317,18 @@ h5 {
   transform: translateY(-10vh);
   font-size: 28rem;
   white-space: nowrap;
-  letter-spacing: 3rem;
   text-align: center;
   font-family: "Zen Kaku Gothic New", serif;
   font-weight: 700;
   font-style: normal;
+  letter-spacing: 13rem;
 }
 @media screen and (max-width: 580px) {
   .container .box #inMyHead {
-    letter-spacing: 1.5rem;
-    font-size: 12rem;
+    font-size: 16rem;
     white-space: wrap;
     writing-mode: vertical-rl;
+    letter-spacing: 5rem;
   }
 }
 .container .box span {
@@ -947,7 +953,7 @@ h5 {
   }
 }
 .container footer {
-  height: 150vh;
+  height: 100vh;
   text-align: center;
   font-size: 1.2rem;
   display: flex;
