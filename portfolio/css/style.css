@@ -258,7 +258,7 @@ h5 {
   position: absolute;
   bottom: 52px !important;
   right: -25px !important;
-  z-index: 6;
+  z-index: 11;
   pointer-events: all !important;
   display: flex;
   flex-direction: column;
