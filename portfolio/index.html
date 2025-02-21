@@ -898,29 +898,28 @@
 
         setTimeout(() => {
           // 1つ目のスクロールトリガー（通常の動き）
-          // ScrollTrigger.create({
-          //   trigger: ".work-illust",
-          //   start: "top 60%",
-          //   end: "top 10%",
-          //   scrub: 1,
-          //   onUpdate: (self) => {
-          //     const progress = self.progress;
-          //     let scale = 1 - progress * 0.5;
-          //     let left = 36 - progress * 65;
-          //     let top = 38 + progress * 8;
-          //     let rotate = progress * 90;
+          ScrollTrigger.create({
+            trigger: ".work-illust",
+            start: "top 60%",
+            end: "top 10%",
+            scrub: 1,
+            onUpdate: (self) => {
+              let scale = 0.5;
+              let left = -29;
+              let top = 46;
+              let rotate = 90;
 
-          //     gsap.to(logo, {
-          //       duration: 0.03,
-          //       left: left,
-          //       top: top,
-          //       scale: scale,
-          //       rotation: rotate,
-          //       ease: "power2.inOut",
-          //       force3D: true,
-          //     });
-          //   },
-          // });
+              gsap.to(logo, {
+                duration: 0.03,
+                left: left,
+                top: top,
+                scale: scale,
+                rotation: rotate,
+                ease: "power2.inOut",
+                force3D: true,
+              });
+            },
+          });
 
           // 2つ目のスクロールトリガー
           ScrollTrigger.create({
