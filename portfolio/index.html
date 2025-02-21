@@ -906,18 +906,18 @@
             onEnter: () => {
               gsap.to(logo, {
                 duration: 0.3,
-                left: "36px", // 初期位置に戻す
-                top: "38px", // 初期位置に戻す
-                scale: 1, // 初期のスケールに戻す
-                rotation: 0, // 初期の回転に戻す
+                left: "-29px", // 初期位置に戻す
+                top: "46px", // 初期位置に戻す
+                scale: 0.5, // 初期のスケールに戻す
+                rotation: 90, // 初期の回転に戻す
                 ease: "power2.inOut",
               });
             },
             onLeaveBack: () => {
               gsap.to(logo, {
                 duration: 0.3,
-                left: "36px", // 初期位置に戻す
-                top: "38px", // 初期位置に戻す
+                left: "80px", // 初期位置に戻す
+                top: "60px", // 初期位置に戻す
                 scale: 1, // 初期のスケールに戻す
                 rotation: 0, // 初期の回転に戻す
                 ease: "power2.inOut",
@@ -951,12 +951,11 @@
             onLeaveBack: () => {
               gsap.to(logo, {
                 duration: 0.3,
-                scale: 1, // 元のスケールに戻す
-                top: "38px", // 元の位置に戻す
-                left: "36px", // 元の位置に戻す
-                x: "0%",
-                y: "0%",
-                rotation: 0, // 元の回転に戻す
+                left: "16px", // 初期位置に戻す
+                top: "66px", // 初期位置に戻す
+                scale: 0.5, // 初期のスケールに戻す
+                rotation: 90, // 初期の回転に戻す
+                ease: "power2.inOut",
                 ease: "power2.out",
               });
             },
