@@ -303,7 +303,7 @@ h5 {
   z-index: 1;
 }
 .container .box #inMyHead {
-  color: #333;
+  color: #777;
   width: 100%;
   height: calc(80vh - 36px);
   display: flex;
