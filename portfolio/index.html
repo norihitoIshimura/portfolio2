@@ -898,7 +898,7 @@
 
         setTimeout(() => {
           // 1つ目のスクロールトリガー（通常の動き）
-          ScrollTrigger.create({
+          const firstScrollTrigger = ScrollTrigger.create({
             trigger: ".work-illust",
             start: "top 60%",
             end: "top 10%",
@@ -935,7 +935,7 @@
           });
 
           // 2つ目のスクロールトリガー
-          ScrollTrigger.create({
+          const secondScrollTrigger = ScrollTrigger.create({
             trigger: "#end",
             start: "top 50%",
             end: "top 10%",
@@ -976,6 +976,12 @@
                 force3D: true,
               });
             },
+          });
+
+          // スクロール位置が変更された際に両方のスクロールトリガーを強制的にリセットする
+          ScrollTrigger.addEventListener("refresh", () => {
+            firstScrollTrigger.refresh();
+            secondScrollTrigger.refresh();
           });
         }, moveDelay);
       });
