@@ -902,7 +902,7 @@
             trigger: ".work-illust",
             start: "top 60%",
             end: "top 10%",
-            scrub: 1, // スクロールに合わせて動かすスピードを速く
+            scrub: 1,
             onUpdate: (self) => {
               const progress = self.progress;
               let scale = 1 - progress * 0.5;
@@ -917,7 +917,7 @@
                 scale: scale,
                 rotation: rotate,
                 ease: "power2.inOut",
-                force3D: true, // GPUによるハードウェアアクセラレーションを有効化
+                force3D: true,
               });
             },
           });
@@ -927,7 +927,8 @@
             trigger: "#end",
             start: "top 50%",
             end: "top 0%",
-            scrub: 1, // スクロールに合わせて動かすスピードを速く
+            scrub: 1,
+            toggleActions: "play none none reverse", // enter時にアニメーション開始、leave時に逆再生
             onEnter: () => {
               const windowWidth = window.innerWidth;
               const scaleValue = windowWidth <= 580 ? 3 : 5;
@@ -942,7 +943,8 @@
                 rotation: "+=270",
                 transformOrigin: "50% 50%",
                 ease: "power2.out",
-                force3D: true, // GPUによるハードウェアアクセラレーションを有効化
+                immediateRender: false, // 即時レンダリングを無効化して、スムーズに動作
+                force3D: true,
               });
             },
 
@@ -957,7 +959,8 @@
                 rotation: 0,
                 ease: "power2.out",
                 rotation: 90,
-                force3D: true, // GPUによるハードウェアアクセラレーションを有効化
+                immediateRender: false,
+                force3D: true,
               });
             },
           });
