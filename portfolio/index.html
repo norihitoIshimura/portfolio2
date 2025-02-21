@@ -929,6 +929,7 @@
             end: "top 0%",
             scrub: 1,
             toggleActions: "play none none reverse", // enter時にアニメーション開始、leave時に逆再生
+            invalidateOnRefresh: true, // リフレッシュ時に状態をリセット
             onEnter: () => {
               const windowWidth = window.innerWidth;
               const scaleValue = windowWidth <= 580 ? 3 : 5;
