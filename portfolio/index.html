@@ -898,7 +898,7 @@
 
         setTimeout(() => {
           // 1つ目のスクロールトリガー（通常の動き）
-          const firstScrollTrigger = ScrollTrigger.create({
+          ScrollTrigger.create({
             trigger: ".work-illust",
             start: "top 60%",
             end: "top 10%",
@@ -906,24 +906,31 @@
             onEnter: () => {
               gsap.to(logo, {
                 duration: 0.3,
-                left: "36px", // ロゴの初期位置に戻す
-                top: "38px", // ロゴの初期位置に戻す
+                left: "36px", // 初期位置に戻す
+                top: "38px", // 初期位置に戻す
                 scale: 1, // 初期のスケールに戻す
-                rotation: 0, // 初期の回転角度に戻す
+                rotation: 0, // 初期の回転に戻す
                 ease: "power2.inOut",
-                force3D: true,
+              });
+            },
+            onLeaveBack: () => {
+              gsap.to(logo, {
+                duration: 0.3,
+                left: "36px", // 初期位置に戻す
+                top: "38px", // 初期位置に戻す
+                scale: 1, // 初期のスケールに戻す
+                rotation: 0, // 初期の回転に戻す
+                ease: "power2.inOut",
               });
             },
           });
 
           // 2つ目のスクロールトリガー
-          const secondScrollTrigger = ScrollTrigger.create({
+          ScrollTrigger.create({
             trigger: "#end",
             start: "top 50%",
-            end: "top 10%",
+            end: "top 0%",
             scrub: 1,
-            toggleActions: "play none none reverse",
-            invalidateOnRefresh: true, // スクロールリフレッシュ後に状態をリセット
             onEnter: () => {
               const windowWidth = window.innerWidth;
               const scaleValue = windowWidth <= 580 ? 3 : 5; // 580px以下なら3倍、それ以上なら5倍
@@ -935,11 +942,9 @@
                 left: "50%",
                 x: "-50%",
                 y: "-50%",
-                rotation: "+=270",
+                rotation: "+=270", // 累積回転
                 transformOrigin: "50% 50%",
                 ease: "power2.out",
-                immediateRender: false,
-                force3D: true,
               });
             },
 
@@ -951,17 +956,10 @@
                 left: "36px", // 元の位置に戻す
                 x: "0%",
                 y: "0%",
-                rotation: 0, // 元の角度に戻す
+                rotation: 0, // 元の回転に戻す
                 ease: "power2.out",
-                force3D: true,
               });
             },
-          });
-
-          // スクロール位置が変更された際に両方のスクロールトリガーを強制的にリセットする
-          ScrollTrigger.addEventListener("refresh", () => {
-            firstScrollTrigger.refresh();
-            secondScrollTrigger.refresh();
           });
         }, moveDelay);
       });
