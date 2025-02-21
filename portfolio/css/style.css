@@ -257,7 +257,7 @@ h5 {
 .container .tonbo .cmyk {
   position: absolute;
   bottom: 52px !important;
-  right: -27px !important;
+  right: -25px !important;
   z-index: 6;
   pointer-events: all !important;
   display: flex;
@@ -269,14 +269,13 @@ h5 {
   }
 }
 .container .tonbo .cmyk button {
-  padding: 8px;
+  height: 13px;
+  width: 13px;
   margin-bottom: 4px;
   border: none;
   cursor: pointer;
 }
 .container .tonbo .cmyk button:last-child {
-  padding: 6px;
-  height: 16px;
   border: 1px solid #bbb;
   margin-bottom: 0;
 }
@@ -1040,4 +1039,34 @@ h5 {
 /* ブラー効果 */
 .blur {
   filter: blur(5px);
+}
+
+@media screen and (orientation: landscape) {
+  .tonbo {
+    position: fixed;
+    top: 0;
+    z-index: 10 !important;
+  }
+  body::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background: black;
+    opacity: 0.8;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    font-family: "Zen Kaku Gothic New", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+    content: "画面を縦向きにしてください。";
+    z-index: 11;
+  }
 }/*# sourceMappingURL=style.css.map */
