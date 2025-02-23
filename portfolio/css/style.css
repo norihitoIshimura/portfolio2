@@ -315,6 +315,7 @@ h5 {
   bottom: 0;
   right: 0;
   z-index: 1;
+  display: none;
 }
 @media screen and (max-width: 580px) {
   .container .top h3 {
@@ -333,13 +334,13 @@ h5 {
   justify-content: center;
   align-items: center;
   transform: translateY(-10vh);
-  font-size: 30rem;
+  font-size: 33rem;
   white-space: nowrap;
   text-align: center;
   font-family: "Zen Kaku Gothic New", serif;
   font-weight: 700;
   font-style: normal;
-  letter-spacing: 9rem;
+  letter-spacing: 12rem;
 }
 @media screen and (max-width: 580px) {
   .container .box #inMyHead {
