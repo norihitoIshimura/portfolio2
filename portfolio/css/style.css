@@ -135,6 +135,9 @@ h5 {
   height: 100vh;
   background-color: #fff;
 }
+.container .logoBox a {
+  text-decoration: none;
+}
 .container .logoBox #logo path {
   fill-opacity: 0; /* 塗りの色を見えない状態に設定 */
   transition: fill-opacity 0.5s; /* アニメーションで徐々に塗る */
