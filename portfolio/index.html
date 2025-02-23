@@ -778,7 +778,6 @@
       });
     </script>
     <script>
-      // 時間
       function displayMessage() {
         // 日本時間の現在時刻を取得
         const now = new Date();
@@ -786,6 +785,16 @@
           now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
         );
         const hour = japanTime.getHours(); // 日本時間の時刻を取得
+
+        // 時間帯に応じたメッセージ
+        let message = "";
+        if (hour >= 5 && hour < 12) {
+          message = "おはようございます。";
+        } else if (hour >= 12 && hour < 18) {
+          message = "こんにちは。";
+        } else {
+          message = "おはようございます。";
+        }
 
         // 日本時間のフォーマット
         const formattedTime = japanTime.toLocaleTimeString("ja-JP", {
@@ -798,8 +807,7 @@
         // HTMLに表示
         document.getElementById(
           "timeMessage"
-          // ).innerHTML = `<p>TOKYO: ${formattedTime}</p> <p>${message}</p>`;
-        ).innerHTML = `<p>TOKYO ${formattedTime}</p>`;
+        ).innerHTML = `<p>TOKYO ${formattedTime}</p><p>${message}デザイナーのノイです。</p>`;
       }
 
       // 初回実行
@@ -808,6 +816,9 @@
       // 1秒ごとに更新
       setInterval(displayMessage, 1000);
     </script>
+
+    <p id="timeMessage"></p>
+
     <script>
       // 背景色
       function changeBackground(color) {
