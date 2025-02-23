@@ -202,13 +202,13 @@ h5 {
   top: 50%;
   transform: translateY(-50%);
   left: 0px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 42%;
   writing-mode: vertical-rl;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.15rem;
   width: 3rem;
 }
 .container header .timeMessage p:last-child {
