@@ -316,6 +316,11 @@ h5 {
   right: 0;
   z-index: 1;
 }
+@media screen and (max-width: 580px) {
+  .container .top h3 {
+    font-size: 2.4rem;
+  }
+}
 .container .box #inMyHead {
   color: #777;
   width: 100%;
