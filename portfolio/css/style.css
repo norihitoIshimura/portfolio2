@@ -315,22 +315,68 @@ h5 {
   height: calc(80vh - 35px);
   position: relative;
 }
-.container .top h3 {
-  font-size: 4.8rem;
+.container .top .scroll_down {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-  display: none;
+  bottom: 10px;
+  right: 5%;
 }
 @media screen and (max-width: 580px) {
-  .container .top h3 {
-    font-size: 2.4rem;
-    right: 50%;
-    transform: translateX(50%);
-    width: 100%;
-    text-align: center;
+  .container .top .scroll_down {
+    right: 40px;
   }
+}
+.container .top .scroll_down a {
+  position: absolute;
+  left: 10px;
+  bottom: 37px;
+  color: #000;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  writing-mode: vertical-lr;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.container .top .scroll_down:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #333;
+  animation: circlemove 4s ease-in-out infinite, cirlemovehide 4s ease-out infinite;
+}
+@keyframes circlemove {
+  0% {
+    bottom: 100px;
+  }
+  100% {
+    bottom: 0px;
+  }
+}
+@keyframes cirlemovehide {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.container .top .scroll_down:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  height: 100px;
+  background: #333;
 }
 .container .box #inMyHead {
   color: #777;
