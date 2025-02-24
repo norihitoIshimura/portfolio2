@@ -70,11 +70,11 @@
           </ul>
         </nav>
         <div id="timeMessage" class="timeMessage">日本時間</div>
-        <p
+        <!-- <p
           id="toggleButton"
           style="position: fixed; z-index: 3; bottom: 50px; left: 9px"
           class="video_pause"
-        ></p>
+        ></p> -->
       </header>
       <div class="tonbo">
         <img src="img/t01.png" alt="" />
@@ -882,31 +882,10 @@
         showNextLine();
       }
 
-      // 停止・再生テキストの動作
-      document
-        .getElementById("toggleButton")
-        .addEventListener("click", function () {
-          if (isDisplaying) {
-            isDisplaying = false; // メッセージ表示を停止
-            document.getElementById(
-              "timeMessage"
-            ).innerHTML = `<p id="formattedTime">TOKYO ${formattedTime}</p><p>メッセージの表示が停止されました。</p>`;
-
-            this.classList.remove("video_pause"); // 「停止」のクラスを削除
-            this.classList.add("video_play"); // 「再生」のクラスを追加
-          } else {
-            isDisplaying = true; // メッセージ表示を再開
-            displayMessage(); // メッセージ表示を再開
-            this.classList.remove("video_play"); // 「再生」のクラスを削除
-            this.classList.add("video_pause"); // 「停止」のクラスを追加
-          }
-        });
-
       // 時間を1秒ごとに更新するsetIntervalを設定
       setInterval(updateTime);
-      displayMessage();
+      displayMessage(); // ページが読み込まれたときにすぐにメッセージ表示を開始
     </script>
-
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         let moveDelay;
