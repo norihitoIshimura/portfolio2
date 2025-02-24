@@ -206,20 +206,16 @@ h5 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70%;
-  flex-wrap: nowrap;
+  height: 42%;
   writing-mode: vertical-rl;
   letter-spacing: 0.15rem;
   width: 3rem;
 }
-.container header .timeMessage .message {
+.container header .timeMessage p:last-child {
   font-family: "Zen Kaku Gothic New", serif;
   font-weight: 400;
   font-style: normal;
   margin-bottom: -150px;
-  max-height: 250px;
-  white-space: nowrap;
-  overflow: hidden;
 }
 .container .tonbo {
   position: fixed;
