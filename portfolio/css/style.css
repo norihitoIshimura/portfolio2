@@ -221,6 +221,11 @@ h5 {
   font-style: normal;
   height: 100%;
 }
+@media screen and (max-width: 580px) {
+  .container header .timeMessage p:last-child {
+    font-size: 0.9rem;
+  }
+}
 .container .tonbo {
   position: fixed;
   top: 0;
