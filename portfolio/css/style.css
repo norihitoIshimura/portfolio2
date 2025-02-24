@@ -322,8 +322,8 @@ h5 {
 }
 @media screen and (max-width: 580px) {
   .container .top .scroll_down {
-    bottom: 40px;
-    right: 90px;
+    bottom: 90px;
+    right: 40px;
   }
 }
 .container .top .scroll_down a {
