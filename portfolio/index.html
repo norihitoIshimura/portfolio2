@@ -318,7 +318,7 @@
           // 初回訪問時のVivusアニメーション
           document.documentElement.style.overflowY = "hidden"; // 縦スクロールを無効化
           document
-            .querySelectorAll(".nav, .timeMessage,.cmyk")
+            .querySelectorAll(".nav, .timeMessage,.cmyk,.tonbo")
             .forEach((el) => (el.style.display = "none")); //トンボ ul など非表示
           new Vivus(
             "logo",
@@ -351,7 +351,7 @@
                 //小物の時差表示
                 document.documentElement.style.overflowY = "auto"; // 縦スクロールを有効化
                 document
-                  .querySelectorAll(".nav, .timeMessage,.cmyk")
+                  .querySelectorAll(".nav, .timeMessage,.cmyk,.tonbo")
                   .forEach((el) => (el.style.display = "flex")); //トンボ
                 //  初回のテキスト横スクロール
                 const container = document.getElementById("container");
@@ -785,106 +785,119 @@
       });
     </script>
     <script>
-      let isDisplaying = true; // メッセージ表示中かどうかのフラグ
-      let formattedTime = ""; // 時間を保存する変数
+      document.addEventListener("DOMContentLoaded", function () {
+        let moveDelay;
 
-      // 時間を更新する関数
-      function updateTime() {
-        const now = new Date();
-        const japanTime = new Date(
-          now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
-        );
-        formattedTime = japanTime.toLocaleTimeString("ja-JP", {
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: false,
-        });
-
-        // 時間表示部分を更新
-        const timeElement = document.getElementById("formattedTime");
-        if (timeElement) {
-          timeElement.innerText = `TOKYO ${formattedTime}`;
-        }
-      }
-
-      // メッセージ表示
-      function displayMessage() {
-        if (!isDisplaying) return; // 表示が停止されている場合は何もしない
-
-        const now = new Date();
-        const japanTime = new Date(
-          now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
-        );
-        const hour = japanTime.getHours();
-
-        let message = "";
-        if (hour >= 5 && hour < 12) {
-          message =
-            "おはようございます、デザイナーのノイです。\nシンプルで伝わりやすいデザインを心がけ、\n目的に応じた表現を大切にしています。\n伝えたいことを、より分かりやすく、より効果的に。\nその想いを込めて、デザインを形にしています。";
-        } else if (hour >= 12 && hour < 18) {
-          message =
-            "こんにちは、デザイナーのノイです。\nシンプルで伝わりやすいデザインを心がけ、\n目的に応じた表現を大切にしています。\n伝えたいことを、より分かりやすく、より効果的に。\nその想いを込めて、デザインを形にしています。";
+        const isFirstVisit = sessionStorage.getItem("isFirstVisit") === null;
+        if (isFirstVisit) {
+          moveDelay = 6500;
         } else {
-          message =
-            "こんばんは、デザイナーのノイです。\nシンプルで伝わりやすいデザインを心がけ、\n目的に応じた表現を大切にしています。\n伝えたいことを、より分かりやすく、より効果的に。\nその想いを込めて、デザインを形にしています。";
+          moveDelay = 0;
         }
 
-        const lines = message.split("\n"); // 改行で分割
-        let currentLine = 0; // 表示中の行
-        let charIndex = 0; // 現在表示中の文字のインデックス
+        setTimeout(() => {
+          let isDisplaying = true; // メッセージ表示中かどうかのフラグ
+          let formattedTime = ""; // 時間を保存する変数
 
-        // メッセージ表示の処理
-        function showNextLine() {
-          if (!isDisplaying) return; // 表示が停止されている場合は終了
+          // 時間を更新する関数
+          function updateTime() {
+            const now = new Date();
+            const japanTime = new Date(
+              now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
+            );
+            formattedTime = japanTime.toLocaleTimeString("ja-JP", {
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+              hour12: false,
+            });
 
-          if (currentLine >= lines.length) {
-            currentLine = 0; // メッセージの行が終了したら最初に戻る
-            charIndex = 0; // 文字のインデックスもリセット
-          }
-
-          const messageContainer = document.getElementById("timeMessage");
-          messageContainer.innerHTML = `<p id="formattedTime">TOKYO ${formattedTime}</p><p id="animatedText"></p>`; // 時間とメッセージを初期化
-
-          const line = lines[currentLine];
-          const animatedText = document.getElementById("animatedText");
-
-          animatedText.style.display = "inline-block"; // 確実に表示されるようにする
-          let lineLength = line.length;
-
-          // 文字を1文字ずつフェードインで表示
-          function showNextChar() {
-            if (!isDisplaying) return; // 表示が停止されている場合は終了
-
-            if (charIndex < lineLength) {
-              const span = document.createElement("span");
-              span.textContent = line[charIndex];
-              span.style.opacity = "0";
-              span.style.transition = "opacity 0.5s ease-in"; // ゆっくりフェードイン
-              animatedText.appendChild(span);
-
-              setTimeout(() => {
-                span.style.opacity = "1";
-              }, charIndex * 150); // 150msごとに次の文字がフェードイン
-
-              charIndex++;
-              setTimeout(showNextChar, 150); // 150msごとに次の文字を追加
-            } else {
-              currentLine++;
-              charIndex = 0;
-              setTimeout(showNextLine, 5000); // 次の行に進む前に5秒待機
+            // 時間表示部分を更新
+            const timeElement = document.getElementById("formattedTime");
+            if (timeElement) {
+              timeElement.innerText = `TOKYO ${formattedTime}`;
             }
           }
 
-          showNextChar();
-        }
+          // メッセージ表示
+          function displayMessage() {
+            if (!isDisplaying) return; // 表示が停止されている場合は何もしない
 
-        showNextLine();
-      }
+            const now = new Date();
+            const japanTime = new Date(
+              now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
+            );
+            const hour = japanTime.getHours();
 
-      // 時間を1秒ごとに更新するsetIntervalを設定
-      setInterval(updateTime);
-      displayMessage(); // ページが読み込まれたときにすぐにメッセージ表示を開始
+            let message = "";
+            if (hour >= 5 && hour < 12) {
+              message =
+                "おはようございます、デザイナーのノイです。\nシンプルで伝わりやすいデザインを心がけ、\n目的に応じた表現を大切にしています。\n伝えたいことを、より分かりやすく、より効果的に。\nその想いを込めて、デザインを形にしています。";
+            } else if (hour >= 12 && hour < 18) {
+              message =
+                "こんにちは、デザイナーのノイです。\nシンプルで伝わりやすいデザインを心がけ、\n目的に応じた表現を大切にしています。\n伝えたいことを、より分かりやすく、より効果的に。\nその想いを込めて、デザインを形にしています。";
+            } else {
+              message =
+                "こんばんは、デザイナーのノイです。\nシンプルで伝わりやすいデザインを心がけ、\n目的に応じた表現を大切にしています。\n伝えたいことを、より分かりやすく、より効果的に。\nその想いを込めて、デザインを形にしています。";
+            }
+
+            const lines = message.split("\n"); // 改行で分割
+            let currentLine = 0; // 表示中の行
+            let charIndex = 0; // 現在表示中の文字のインデックス
+
+            // メッセージ表示の処理
+            function showNextLine() {
+              if (!isDisplaying) return; // 表示が停止されている場合は終了
+
+              if (currentLine >= lines.length) {
+                currentLine = 0; // メッセージの行が終了したら最初に戻る
+                charIndex = 0; // 文字のインデックスもリセット
+              }
+
+              const messageContainer = document.getElementById("timeMessage");
+              messageContainer.innerHTML = `<p id="formattedTime">TOKYO ${formattedTime}</p><p id="animatedText"></p>`; // 時間とメッセージを初期化
+
+              const line = lines[currentLine];
+              const animatedText = document.getElementById("animatedText");
+
+              animatedText.style.display = "inline-block"; // 確実に表示されるようにする
+              let lineLength = line.length;
+
+              // 文字を1文字ずつフェードインで表示
+              function showNextChar() {
+                if (!isDisplaying) return; // 表示が停止されている場合は終了
+
+                if (charIndex < lineLength) {
+                  const span = document.createElement("span");
+                  span.textContent = line[charIndex];
+                  span.style.opacity = "0";
+                  span.style.transition = "opacity 0.5s ease-in"; // ゆっくりフェードイン
+                  animatedText.appendChild(span);
+
+                  setTimeout(() => {
+                    span.style.opacity = "1";
+                  }, charIndex * 150); // 150msごとに次の文字がフェードイン
+
+                  charIndex++;
+                  setTimeout(showNextChar, 150); // 150msごとに次の文字を追加
+                } else {
+                  currentLine++;
+                  charIndex = 0;
+                  setTimeout(showNextLine, 5000); // 次の行に進む前に5秒待機
+                }
+              }
+
+              showNextChar();
+            }
+
+            showNextLine();
+          }
+
+          // 時間を1秒ごとに更新するsetIntervalを設定
+          setInterval(updateTime);
+          displayMessage(); // ページが読み込まれたときにすぐにメッセージ表示を開始
+        }, moveDelay);
+      });
     </script>
 
     <script>
