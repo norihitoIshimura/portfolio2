@@ -322,8 +322,8 @@ h5 {
 }
 @media screen and (max-width: 580px) {
   .container .top .scroll_down {
-    bottom: 100px;
-    right: 40px;
+    bottom: 70px;
+    right: 30px;
   }
 }
 .container .top .scroll_down:after {
@@ -342,7 +342,7 @@ h5 {
   left: 0;
   z-index: 2;
   width: 12px;
-  padding: 10px 10px 110px;
+  padding: 10px 10px 80px;
   color: #000;
   font-size: 1.2rem;
   letter-spacing: 0.2em;
@@ -359,7 +359,7 @@ h5 {
   bottom: 0;
   left: 50%;
   width: 1px;
-  height: 100px;
+  height: 70px;
   background: #ddd;
 }
 .container .top .scroll_down a:after {
@@ -368,7 +368,7 @@ h5 {
   bottom: 0;
   left: 50%;
   width: 1px;
-  height: 100px;
+  height: 70px;
   background: #000;
 }
 .container .top .scroll_down a:hover {
