@@ -1084,8 +1084,8 @@ h5 {
 .video_play {
   display: inline-block;
   position: relative;
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.2rem;
+  height: 1.2rem;
   border: 0.05rem solid currentColor;
   border-radius: 50%;
   color: #333;
@@ -1107,8 +1107,8 @@ h5 {
 .video_pause {
   display: inline-block;
   position: relative;
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.2rem;
+  height: 1.2rem;
   border: 0.05rem solid currentColor;
   border-radius: 50%;
   color: #333;
