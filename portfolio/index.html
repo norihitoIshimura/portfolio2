@@ -777,28 +777,26 @@
         });
       });
     </script>
-    <div id="timeMessage"></div>
-
     <script>
-      let scrollIndex = 0;
-      let scrollSpeed = 1000; // スクロールの間隔（ミリ秒）
-
       function displayMessage() {
+        // 日本時間の現在時刻を取得
         const now = new Date();
         const japanTime = new Date(
           now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
         );
-        const hour = japanTime.getHours();
+        const hour = japanTime.getHours(); // 日本時間の時刻を取得
 
+        // 時間帯に応じたメッセージ
         let message = "";
         if (hour >= 5 && hour < 12) {
-          message = "おはようございます。";
+          message = "おはようございます、ウェブデザイナーのノイです。";
         } else if (hour >= 12 && hour < 18) {
-          message = "こんにちは。";
+          message = "こんにちは、ウェブデザイナーのノイです。";
         } else {
-          message = "こんばんは。";
+          message = "こんばんは、ウェブデザイナーのノイです。";
         }
 
+        // 日本時間のフォーマット
         const formattedTime = japanTime.toLocaleTimeString("ja-JP", {
           hour: "2-digit",
           minute: "2-digit",
@@ -806,24 +804,23 @@
           hour12: false,
         });
 
-        // 流れるメッセージ（2行目のみ）
-        const animatedMessage = `${message}デザイナーのノイです。`;
-
-        // 文字を1文字ずつずらして表示（ループ）
-        const displayedText =
-          animatedMessage.substring(scrollIndex) +
-          animatedMessage.substring(0, scrollIndex);
-
+        // HTMLに表示
         document.getElementById(
           "timeMessage"
-        ).innerHTML = `<p style="margin:0; white-space: nowrap;"><div>TOKYO ${formattedTime}</div><div class="message">${displayedText}</div></p>`;
-
-        // インデックスを更新（メッセージの長さでループ）
-        scrollIndex = (scrollIndex + 1) % animatedMessage.length;
+        ).innerHTML = `<p>TOKYO ${formattedTime}</p><p>${message}</p>`;
       }
 
+      // 初回実行
       displayMessage();
-      setInterval(displayMessage, scrollSpeed);
+
+      // 1秒ごとに更新
+      setInterval(displayMessage, 1000);
+    </script>
+    <script>
+      // 背景色
+      function changeBackground(color) {
+        document.body.style.backgroundColor = color;
+      }
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
