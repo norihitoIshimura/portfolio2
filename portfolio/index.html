@@ -72,7 +72,7 @@
         <div id="timeMessage" class="timeMessage">日本時間</div>
         <p
           id="toggleButton"
-          style="position: fixed; z-index: 999; bottom: 50px; left: 7px"
+          style="position: fixed; z-index: 3; bottom: 50px; left: 7px"
           class="video_pause"
         ></p>
       </header>
@@ -888,8 +888,10 @@
         .addEventListener("click", function () {
           if (isDisplaying) {
             isDisplaying = false; // メッセージ表示を停止
-            document.getElementById("timeMessage").innerHTML =
-              "<p style='height: 50%;'>メッセージの表示が停止されました。</p>";
+            document.getElementById(
+              "timeMessage"
+            ).innerHTML = `<p id="formattedTime">TOKYO ${formattedTime}</p><p>メッセージの表示が停止されました。</p>`;
+
             this.classList.remove("video_pause"); // 「停止」のクラスを削除
             this.classList.add("video_play"); // 「再生」のクラスを追加
           } else {
