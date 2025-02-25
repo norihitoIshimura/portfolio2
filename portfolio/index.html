@@ -318,7 +318,7 @@
           // 初回訪問時のVivusアニメーション
           document.documentElement.style.overflowY = "hidden"; // 縦スクロールを無効化
           document
-            .querySelectorAll(".nav, .timeMessage,.cmyk,.tonbo")
+            .querySelectorAll(".nav, .timeMessage,.cmyk,.tonbo,.video_pause")
             .forEach((el) => (el.style.display = "none")); //トンボ ul など非表示
           new Vivus(
             "logo",
@@ -351,7 +351,9 @@
                 //小物の時差表示
                 document.documentElement.style.overflowY = "auto"; // 縦スクロールを有効化
                 document
-                  .querySelectorAll(".nav, .timeMessage,.cmyk,.tonbo")
+                  .querySelectorAll(
+                    ".nav, .timeMessage,.cmyk,.tonbo,.video_pause"
+                  )
                   .forEach((el) => (el.style.display = "flex")); //トンボ
                 //  初回のテキスト横スクロール
                 const container = document.getElementById("container");
