@@ -1107,5 +1107,11 @@
         document.body.style.backgroundColor = color;
       }
     </script>
+    <script>
+      // 内部リンク対策
+      window.addEventListener("hashchange", function () {
+        history.replaceState(null, null, window.location.pathname);
+      });
+    </script>
   </body>
 </html>
