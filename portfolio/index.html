@@ -73,7 +73,7 @@
         <p
           id="toggleButton"
           style="position: fixed; z-index: 999; bottom: 42px; left: 5px"
-          class="video_pause"
+          class="video_play"
         ></p>
       </header>
       <div class="tonbo">
@@ -792,6 +792,7 @@
       document.addEventListener("DOMContentLoaded", function () {
         let moveDelay;
 
+        // 初回訪問時の遅延時間設定
         const isFirstVisit = sessionStorage.getItem("isFirstVisit") === null;
         if (isFirstVisit) {
           moveDelay = 6500;
@@ -799,33 +800,36 @@
           moveDelay = 0;
         }
 
-        setTimeout(() => {
-          let isDisplaying = true; // メッセージ表示中かどうかのフラグ
-          let formattedTime = ""; // 時間を保存する変数
+        let isDisplaying = false; // メッセージの初期状態は停止
+        let formattedTime = ""; // 時間を保存する変数
 
-          // 時間を更新する関数
-          function updateTime() {
-            const now = new Date();
-            const japanTime = new Date(
-              now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
-            );
-            formattedTime = japanTime.toLocaleTimeString("ja-JP", {
-              hour: "2-digit",
-              minute: "2-digit",
-              second: "2-digit",
-              hour12: false,
-            });
+        // 時間を更新する関数
+        function updateTime() {
+          const now = new Date();
+          const japanTime = new Date(
+            now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
+          );
+          formattedTime = japanTime.toLocaleTimeString("ja-JP", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false,
+          });
 
-            // 時間表示部分を更新
-            const timeElement = document.getElementById("formattedTime");
-            if (timeElement) {
-              timeElement.innerText = `TOKYO ${formattedTime}`;
-            }
+          // 時刻は常に表示
+          const timeElement = document.getElementById("formattedTime");
+          if (timeElement) {
+            timeElement.innerText = `TOKYO ${formattedTime}`;
           }
+        }
 
+        // 時間を1秒ごとに更新
+        setInterval(updateTime); // 時間の更新を常に行う
+
+        setTimeout(() => {
           // メッセージ表示
           function displayMessage() {
-            if (!isDisplaying) return; // 表示が停止されている場合は何もしない
+            if (!isDisplaying) return; // メッセージが表示されていない場合は何もしない
 
             const now = new Date();
             const japanTime = new Date(
@@ -836,54 +840,52 @@
             let message = "";
             if (hour >= 5 && hour < 12) {
               message =
-                "おはようございます、デザイナーのノイです。\nウェブ制作・デザイン制作を中心に行っています。\nシンプルで伝わりやすいデザインを大切にし、\n目的に応じた表現で、想いを形にします。\nウェブ・ロゴ・印刷物のデザインから、\nHTML・CSS・JSを活用したコーディングまで。\n伝えたいことを、より分かりやすく、より効果的に。\nその想いを込めて、デザインを形にしています。";
+                "おはようございます、デザイナーのノイです。\nウェブ制作・デザイン制作を中心に行っています。\nシンプルで伝わりやすいデザインを大切にし、\n目的に応じた表現で、想いを形にします。\nウェブ・ロゴ・印刷物のデザインから、\nHTML・CSS・JSを活用したコーディングまで。\n伝えたいことを、より分かりやすく、より効果的に。";
             } else if (hour >= 12 && hour < 18) {
               message =
-                "こんにちは、デザイナーのノイです。\nウェブ制作・デザイン制作を中心に行っています。\nシンプルで伝わりやすいデザインを大切にし、\n目的に応じた表現で、想いを形にします。\nウェブ・ロゴ・印刷物のデザインから、\nHTML・CSS・JSを活用したコーディングまで。\n伝えたいことを、より分かりやすく、より効果的に。\nその想いを込めて、デザインを形にしています。";
+                "こんにちは、デザイナーのノイです。\nウェブ制作・デザイン制作を中心に行っています。\nシンプルで伝わりやすいデザインを大切にし、\n目的に応じた表現で、想いを形にします。\nウェブ・ロゴ・印刷物のデザインから、\nHTML・CSS・JSを活用したコーディングまで。\n伝えたいことを、より分かりやすく、より効果的に。";
             } else {
               message =
-                "こんばんは、デザイナーのノイです。\nウェブ制作・デザイン制作を中心に行っています。\nシンプルで伝わりやすいデザインを大切にし、\n目的に応じた表現で、想いを形にします。\nウェブ・ロゴ・印刷物のデザインから、\nHTML・CSS・JSを活用したコーディングまで。\n伝えたいことを、より分かりやすく、より効果的に。\nその想いを込めて、デザインを形にしています。";
+                "こんばんは、デザイナーのノイです。\nウェブ制作・デザイン制作を中心に行っています。\nシンプルで伝わりやすいデザインを大切にし、\n目的に応じた表現で、想いを形にします。\nウェブ・ロゴ・印刷物のデザインから、\nHTML・CSS・JSを活用したコーディングまで。\n伝えたいことを、より分かりやすく、より効果的に。";
             }
 
-            const lines = message.split("\n"); // 改行で分割
-            let currentLine = 0; // 表示中の行
-            let charIndex = 0; // 現在表示中の文字のインデックス
+            const lines = message.split("\n");
+            let currentLine = 0;
+            let charIndex = 0;
 
-            // メッセージ表示の処理
             function showNextLine() {
-              if (!isDisplaying) return; // 表示が停止されている場合は終了
+              if (!isDisplaying) return;
 
               if (currentLine >= lines.length) {
-                currentLine = 0; // メッセージの行が終了したら最初に戻る
-                charIndex = 0; // 文字のインデックスもリセット
+                currentLine = 0;
+                charIndex = 0;
               }
 
               const messageContainer = document.getElementById("timeMessage");
-              messageContainer.innerHTML = `<p id="formattedTime">TOKYO ${formattedTime}</p><p id="animatedText"></p>`; // 時間とメッセージを初期化
+              messageContainer.innerHTML = `<p id="formattedTime">TOKYO ${formattedTime}</p><p id="animatedText"></p>`;
 
               const line = lines[currentLine];
               const animatedText = document.getElementById("animatedText");
 
-              animatedText.style.display = "inline-block"; // 確実に表示されるようにする
+              animatedText.style.display = "inline-block";
               let lineLength = line.length;
 
-              // 文字を1文字ずつフェードインで表示
               function showNextChar() {
-                if (!isDisplaying) return; // 表示が停止されている場合は終了
+                if (!isDisplaying) return;
 
                 if (charIndex < lineLength) {
                   const span = document.createElement("span");
                   span.textContent = line[charIndex];
                   span.style.opacity = "0";
-                  span.style.transition = "opacity 0.5s ease-in"; // ゆっくりフェードイン
+                  span.style.transition = "opacity 0.5s ease-in";
                   animatedText.appendChild(span);
 
                   setTimeout(() => {
                     span.style.opacity = "1";
-                  }, charIndex * 150); // 150msごとに次の文字がフェードイン
+                  }, charIndex * 150);
 
                   charIndex++;
-                  setTimeout(showNextChar, 150); // 150msごとに次の文字を追加
+                  setTimeout(showNextChar, 150);
                 } else {
                   currentLine++;
                   charIndex = 0;
@@ -902,23 +904,24 @@
             .getElementById("toggleButton")
             .addEventListener("click", function () {
               if (isDisplaying) {
-                isDisplaying = false; // メッセージ表示を停止
+                isDisplaying = false;
                 document.getElementById(
                   "timeMessage"
-                ).innerHTML = `<p id="formattedTime">TOKYO ${formattedTime}</p><p style="width: 50%">メッセージの表示が停止されました。</p>`;
-                this.classList.remove("video_pause"); // 「停止」のクラスを削除
-                this.classList.add("video_play"); // 「再生」のクラスを追加
+                ).innerHTML = `<p id="formattedTime">TOKYO ${formattedTime}</p><p style="width: 50%">&nbsp;</p>`;
+                this.classList.remove("video_pause");
+                this.classList.add("video_play");
               } else {
-                isDisplaying = true; // メッセージ表示を再開
-                displayMessage(); // メッセージ表示を再開
-                this.classList.remove("video_play"); // 「再生」のクラスを削除
-                this.classList.add("video_pause"); // 「停止」のクラスを追加
+                isDisplaying = true;
+                displayMessage();
+                this.classList.remove("video_play");
+                this.classList.add("video_pause");
               }
             });
 
-          // 時間を1秒ごとに更新するsetIntervalを設定
-          setInterval(updateTime);
-          displayMessage(); // ページが読み込まれたときにすぐにメッセージ表示を開始
+          // 最初にメッセージを停止した状態で表示
+          document.getElementById(
+            "timeMessage"
+          ).innerHTML = `<p id="formattedTime">TOKYO ${formattedTime}</p><p style="width: 50%">&nbsp;</p>`;
         }, moveDelay);
       });
     </script>
