@@ -374,13 +374,12 @@ h5 {
   font-weight: 700;
   font-style: normal;
   letter-spacing: 14rem;
-  margin-top: 80px;
 }
 @media screen and (max-width: 580px) {
   .container .box #inMyHead {
     font-size: 16rem;
     writing-mode: vertical-rl;
-    letter-spacing: 8rem;
+    letter-spacing: 4rem;
   }
 }
 .container .box span {
