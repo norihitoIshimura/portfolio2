@@ -367,19 +367,20 @@ h5 {
   justify-content: center;
   align-items: center;
   transform: translateY(-10vh);
-  font-size: 33rem;
+  font-size: 34rem;
   white-space: nowrap;
   text-align: center;
   font-family: "Zen Kaku Gothic New", serif;
   font-weight: 700;
   font-style: normal;
-  letter-spacing: 12rem;
+  letter-spacing: 14rem;
+  margin-top: 80px;
 }
 @media screen and (max-width: 580px) {
   .container .box #inMyHead {
     font-size: 16rem;
     writing-mode: vertical-rl;
-    letter-spacing: 5rem;
+    letter-spacing: 8rem;
   }
 }
 .container .box span {
