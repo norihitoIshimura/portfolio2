@@ -360,7 +360,7 @@ h5 {
   }
 }
 .container .box #inMyHead {
-  color: #777;
+  color: #999;
   width: 100%;
   height: calc(80vh - 36px);
   display: flex;
