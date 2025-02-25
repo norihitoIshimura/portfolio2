@@ -215,7 +215,7 @@ h5 {
 }
 @media screen and (max-width: 580px) {
   .container header .timeMessage {
-    font-size: 1rem;
+    font-size: 0.95rem;
     justify-content: center;
   }
 }
