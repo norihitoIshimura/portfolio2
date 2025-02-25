@@ -597,7 +597,7 @@ h5 {
   .container #about .about {
     width: auto;
     font-size: 2.6rem;
-    margin: 0 auto 120px;
+    margin: 0 auto 90px;
     padding: 0px;
     text-align: justify;
   }
@@ -762,7 +762,7 @@ h5 {
   .container #about .design {
     width: auto;
     font-size: 2.6rem;
-    margin: 0 auto 120px;
+    margin: 0 auto 90px;
     padding: 0px;
     text-align: justify;
   }
@@ -858,7 +858,7 @@ h5 {
   .container #about .cording {
     width: auto;
     font-size: 2.6rem;
-    margin: 0 auto 120px;
+    margin: 0 auto 90px;
     padding: 0;
   }
 }
@@ -971,6 +971,11 @@ h5 {
   margin-bottom: 120px;
   text-align: center;
 }
+@media screen and (max-width: 580px) {
+  .container .work-illust {
+    margin-bottom: 60px;
+  }
+}
 .container .work-illust h4 {
   font-size: 20rem;
   padding: 40px;
@@ -1080,7 +1085,7 @@ h5 {
   .container .scroll-text {
     font-size: 10rem;
     writing-mode: vertical-rl;
-    padding: 15vh 0;
+    padding: 33vh 0;
   }
 }
 .container footer {
