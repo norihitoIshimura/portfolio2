@@ -366,8 +366,10 @@ h5 {
 }
 @media screen and (max-width: 580px) {
   .container .top .scroll_down {
-    bottom: 70px;
-    right: 30px;
+    bottom: 60px;
+    right: none;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 .container .top .scroll_down:after {
