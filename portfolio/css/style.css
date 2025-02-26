@@ -41,14 +41,6 @@ h5 {
   }
 }
 
-.nav,
-.timeMessage,
-.cmyk,
-.tonbo,
-.video_play {
-  display: none;
-}
-
 /* ロゴ移動アニメのスタイル */
 .opening {
   width: 600px;
