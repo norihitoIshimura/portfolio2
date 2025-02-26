@@ -1135,6 +1135,15 @@ h5 {
   height: 1.5rem;
   border: 0.1rem solid currentColor;
   color: #333;
+  position: fixed;
+  z-index: 999;
+  bottom: 52px;
+  left: 5px;
+}
+@media screen and (max-width: 580px) {
+  .video_play {
+    bottom: 42px;
+  }
 }
 
 .video_play::before {
@@ -1157,8 +1166,16 @@ h5 {
   height: 1.5rem;
   border: 0.1rem solid currentColor;
   color: #333;
-  font-size: 200px;
   cursor: pointer;
+  position: fixed;
+  z-index: 999;
+  bottom: 52px;
+  left: 5px;
+}
+@media screen and (max-width: 580px) {
+  .video_pause {
+    bottom: 42px;
+  }
 }
 
 .video_pause::before,
