@@ -543,6 +543,9 @@
             }
           );
         } else {
+          document
+            .querySelectorAll(".nav, .timeMessage,.cmyk,.tonbo,.video_play")
+            .forEach((el) => (el.style.visibility = "visible"));
           // それ以降はGSAPのアニメーションを常に動作させる
           const logoContainer = document.getElementById("logo-container");
           if (logoContainer) {
