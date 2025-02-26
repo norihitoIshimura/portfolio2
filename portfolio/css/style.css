@@ -381,8 +381,9 @@ h5 {
   .container .box #inMyHead {
     font-size: 18rem;
     writing-mode: vertical-rl;
-    letter-spacing: 6rem;
+    letter-spacing: 4rem;
     height: 100vh;
+    margin-top: -100px;
   }
 }
 .container .box span {
@@ -1009,7 +1010,7 @@ h5 {
   .container .scroll-text {
     font-size: 10rem;
     writing-mode: vertical-rl;
-    padding: 33vh 0;
+    padding: 50vh 0;
   }
 }
 .container footer {
