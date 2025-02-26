@@ -165,10 +165,10 @@ h5 {
   margin-left: 84px;
   letter-spacing: normal;
 }
-.container header .title p {
+.container header .title h3 {
   line-height: 1.7;
   font-size: 1.8rem;
-  margin-left: 84px;
+  margin-left: 88px;
 }
 .container header .nav {
   position: fixed;
@@ -375,7 +375,7 @@ h5 {
   font-family: "Zen Kaku Gothic New", serif;
   font-weight: 700;
   font-style: normal;
-  letter-spacing: 12rem;
+  letter-spacing: 8rem;
 }
 @media screen and (max-width: 580px) {
   .container .box #inMyHead {
