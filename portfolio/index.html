@@ -1110,5 +1110,20 @@
         history.replaceState(null, null, window.location.pathname);
       });
     </script>
+    <!-- <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // ScrollTriggerプラグインを登録
+        gsap.registerPlugin(ScrollTrigger);
+
+        // ScrollTriggerの設定
+        ScrollTrigger.create({
+          trigger: "#horizontal-section",
+          start: "top 0%",
+          endTrigger: ".work-illust",
+          end: "top 100%",
+          toggleClass: { targets: "#inMyHead", className: "active" },
+        });
+      });
+    </script> -->
   </body>
 </html>
