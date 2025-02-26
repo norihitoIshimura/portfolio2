@@ -382,6 +382,7 @@ h5 {
     font-size: 18rem;
     writing-mode: vertical-rl;
     letter-spacing: 6rem;
+    height: 100vh;
   }
 }
 .container .box span {
