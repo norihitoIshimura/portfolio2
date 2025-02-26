@@ -135,9 +135,8 @@ h5 {
   width: auto;
   height: 100vh;
   background-color: #fff;
-}
-.container .logoBox a {
   text-decoration: none;
+  outline: none;
 }
 .container .logoBox #logo path {
   fill-opacity: 0; /* 塗りの色を見えない状態に設定 */
@@ -190,6 +189,7 @@ h5 {
 }
 .container header .nav ul li a {
   text-decoration: none;
+  outline: none;
   color: #333;
 }
 .container header .nav ul li:first-child {
@@ -367,19 +367,19 @@ h5 {
   justify-content: center;
   align-items: center;
   transform: translateY(-10vh);
-  font-size: 34rem;
+  font-size: 40rem;
   white-space: nowrap;
   text-align: center;
   font-family: "Zen Kaku Gothic New", serif;
   font-weight: 700;
   font-style: normal;
-  letter-spacing: 14rem;
+  letter-spacing: 16rem;
 }
 @media screen and (max-width: 580px) {
   .container .box #inMyHead {
-    font-size: 16rem;
+    font-size: 18rem;
     writing-mode: vertical-rl;
-    letter-spacing: 4rem;
+    letter-spacing: 6rem;
   }
 }
 .container .box span {
