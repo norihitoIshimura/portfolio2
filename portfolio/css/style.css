@@ -362,7 +362,7 @@ h5 {
   }
 }
 .container .box #inMyHead {
-  color: #999;
+  color: #777;
   width: 100%;
   height: calc(80vh - 36px);
   display: flex;
@@ -375,7 +375,7 @@ h5 {
   font-family: "Zen Kaku Gothic New", serif;
   font-weight: 700;
   font-style: normal;
-  letter-spacing: 16rem;
+  letter-spacing: 12rem;
 }
 @media screen and (max-width: 580px) {
   .container .box #inMyHead {
@@ -1004,6 +1004,7 @@ h5 {
   font-family: "Zen Kaku Gothic New", serif;
   font-weight: 700;
   font-style: normal;
+  color: #777;
 }
 @media screen and (max-width: 580px) {
   .container .scroll-text {
