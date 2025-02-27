@@ -148,6 +148,12 @@ h5 {
   background-color: #fff;
   text-decoration: none;
   outline: none;
+  display: block;
+}
+@media screen and (max-width: 1000px) and (max-height: 480px) and (orientation: landscape) {
+  .container .logoBox {
+    display: none;
+  }
 }
 .container .logoBox #logo path {
   fill-opacity: 0; /* 塗りの色を見えない状態に設定 */
