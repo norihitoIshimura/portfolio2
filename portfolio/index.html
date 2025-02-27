@@ -725,49 +725,28 @@
       });
 
       // 文字のランダム
-      document.addEventListener("DOMContentLoaded", () => {
-        const text = document.querySelector("#inMyHead h4");
-        const originalText = text.textContent;
+      function randomize() {
+        const spans = document.querySelectorAll("#inMyHead h4 span");
+        const randomIndex = Math.floor(Math.random() * spans.length);
+        const windowWidth = window.innerWidth;
+        const marginValue = windowWidth <= 580 ? 50 : 0;
 
-        text.textContent = ""; // 元のテキストを削除
+        spans.forEach((span, index) => {
+          const waveEffect =
+            Math.sin((index / spans.length) * Math.PI * 2) * 10;
 
-        // 元のテキストを1文字ずつspanタグでラップ
-        Array.from(originalText).forEach((char) => {
-          const span = document.createElement("span");
-          span.textContent = char;
-          text.appendChild(span);
-        });
-
-        // ランダムに動かす関数（波打つように動かす）
-        function randomize() {
-          const spans = document.querySelectorAll("#inMyHead h4 span");
-          const randomIndex = Math.floor(Math.random() * spans.length); // ランダムで1つの要素を選択
-          const windowWidth = window.innerWidth;
-          const marginValue = windowWidth <= 580 ? 65 : 0; // 580px以下なら-70px、それ以上なら0px
-
-          spans.forEach((span, index) => {
-            const waveEffect =
-              Math.sin((index / spans.length) * Math.PI * 2) * 10; // 波の揺れ
-
-            gsap.to(span, {
-              x: () => Math.random() * 120 - 10 - marginValue, // x軸でランダムに移動
-              y: () => Math.random() * 120 - 10 + waveEffect, // y軸でランダムに移動
-              rotation: () => Math.random() * 40 - 10, // ランダム回転
-              scale:
-                index === randomIndex ? 1 + (Math.random() * 1.9 - 0.15) : 1, // 選ばれた1つだけランダムでスケール
-              opacity: index === randomIndex ? 1.0 : 0.3, // 選ばれた1つだけ濃く、それ以外は0.3
-              duration: 3, // アニメーションの時間
-              ease: "power1.inOut", // アニメーションの緩やかさ
-            });
+          gsap.to(span, {
+            x: Math.random() * 120 - 10 - marginValue,
+            y: Math.random() * 120 - 10 + waveEffect,
+            rotation: Math.random() * 40 - 10,
+            scale: index === randomIndex ? 1 + (Math.random() * 1.9 - 0.15) : 1,
+            opacity: index === randomIndex ? 1.0 : 0.3,
+            duration: 3,
+            ease: "power1.inOut",
+            onComplete: () => requestAnimationFrame(randomize), // アニメーション終了後に次の更新をセット
           });
-
-          // 定期的にランダムな動きを更新
-          setTimeout(randomize, 3000); // 3秒毎に動きがリセット
-        }
-
-        // 初回のランダムアニメーションを開始
-        randomize();
-      });
+        });
+      }
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -1111,6 +1090,7 @@
       // 背景色
       function changeBackground(color) {
         document.body.style.backgroundColor = color;
+        document.documentElement.style.backgroundColor = color; // ← 追加
       }
     </script>
     <script>
