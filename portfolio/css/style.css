@@ -178,13 +178,13 @@ h5 {
 }
 .container header .title h2 {
   font-size: 5rem;
-  margin-left: 84px;
+  margin-left: 94px;
   letter-spacing: normal;
 }
 .container header .title h3 {
-  line-height: 1.7;
+  line-height: 1.4;
   font-size: 1.8rem;
-  margin-left: 88px;
+  margin-left: 98px;
 }
 .container header .nav {
   position: fixed;
