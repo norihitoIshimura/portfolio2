@@ -1110,13 +1110,11 @@
     <script>
       // 背景色を変更する関数
       function changeBackground(color) {
-        // transitionプロパティを使って色変更をスムーズにする
-        document.body.style.transition = "background-color 1s ease";
-        document.documentElement.style.transition = "background-color 1s ease";
-
-        // 色を変更
-        document.body.style.backgroundColor = color;
-        document.documentElement.style.backgroundColor = color;
+        // requestAnimationFrame内で背景色変更を一度に実行
+        requestAnimationFrame(() => {
+          document.body.style.backgroundColor = color;
+          document.documentElement.style.backgroundColor = color;
+        });
       }
     </script>
     <script>
