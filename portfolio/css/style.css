@@ -190,7 +190,7 @@ h5 {
   position: fixed;
   top: 50%;
   right: -6px;
-  z-index: 2;
+  z-index: 9;
   transform: translateY(-50%);
   writing-mode: vertical-rl;
 }
@@ -203,12 +203,18 @@ h5 {
 }
 .container header .nav ul li {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .container header .nav ul li a {
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   outline: none;
   color: #333;
+}
+.container header .nav ul li a img {
+  vertical-align: middle;
 }
 .container header .nav ul li:first-child {
   margin-top: -70px;
