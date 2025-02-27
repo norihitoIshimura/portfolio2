@@ -45,7 +45,8 @@ h5 {
 .timeMessage,
 .cmyk,
 .tonbo,
-.video_play {
+.video_play,
+.scroll-indicator {
   visibility: hidden;
 }
 
@@ -226,7 +227,7 @@ h5 {
 }
 @media screen and (max-width: 580px) {
   .container header .timeMessage {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     justify-content: center;
   }
 }
@@ -248,9 +249,6 @@ h5 {
 }
 @media screen and (max-width: 580px) {
   .container header .timeMessage p:last-child {
-    text-align: left;
-    width: 2.1rem;
-    height: 30%;
     line-height: 1.2;
   }
 }
@@ -346,6 +344,19 @@ h5 {
 }
 .container .tonbo .cmyk .white {
   background-color: #fff;
+}
+.container .tonbo .scroll-indicator {
+  position: fixed;
+  top: 31px;
+  right: 5px;
+  font-size: 1.6rem;
+  writing-mode: vertical-rl;
+  display: flex;
+  justify-content: space-around;
+  height: 8rem; /* 3桁分の高さを確保 */
+  text-align: center;
+  font-variant: tabular-nums;
+  font-feature-settings: "tnum";
 }
 .container .top {
   width: auto;
@@ -1152,7 +1163,9 @@ h5 {
 }
 @media screen and (max-width: 580px) {
   .video_play {
-    bottom: 42px;
+    top: 37%;
+    transform: translateY(-37%);
+    background-color: #fff;
   }
 }
 
@@ -1184,7 +1197,8 @@ h5 {
 }
 @media screen and (max-width: 580px) {
   .video_pause {
-    bottom: 42px;
+    top: 37%;
+    transform: translateY(-37%);
   }
 }
 
