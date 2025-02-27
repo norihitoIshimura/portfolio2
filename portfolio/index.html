@@ -92,6 +92,9 @@
           <button class="black" onclick="changeBackground('#bbb')"></button>
           <button class="white" onclick="changeBackground('#fff')"></button>
         </div>
+        <div>
+          <div class="scroll-indicator">0%</div>
+        </div>
       </div>
 
       <section class="top">
@@ -315,7 +318,9 @@
           // 初回訪問時のVivusアニメーション
           document.documentElement.style.overflowY = "hidden"; // 縦スクロールを無効化
           document
-            .querySelectorAll(".nav, .timeMessage,.cmyk,.tonbo,.video_play")
+            .querySelectorAll(
+              ".nav, .timeMessage,.cmyk,.tonbo,.video_play,.scroll-indicator"
+            )
             .forEach((el) => (el.style.visibility = "hidden")); //トンボ ul など非表示
           new Vivus(
             "logo",
@@ -349,7 +354,7 @@
                 document.documentElement.style.overflowY = "auto"; // 縦スクロールを有効化
                 document
                   .querySelectorAll(
-                    ".nav, .timeMessage,.cmyk,.tonbo,.video_play"
+                    ".nav, .timeMessage,.cmyk,.tonbo,.video_play,.scroll-indicator"
                   )
                   .forEach((el) => (el.style.visibility = "visible")); //トンボ
                 //  初回のテキスト横スクロール
@@ -544,7 +549,9 @@
           );
         } else {
           document
-            .querySelectorAll(".nav, .timeMessage,.cmyk,.tonbo,.video_play")
+            .querySelectorAll(
+              ".nav, .timeMessage,.cmyk,.tonbo,.video_play,.scroll-indicator"
+            )
             .forEach((el) => (el.style.visibility = "visible"));
           // それ以降はGSAPのアニメーションを常に動作させる
           const logoContainer = document.getElementById("logo-container");
@@ -1128,5 +1135,18 @@
         });
       });
     </script> -->
+    <script>
+      function updateScrollIndicator() {
+        const scrollTop = window.scrollY;
+        const docHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        document.querySelector(".scroll-indicator").textContent = `${Math.round(
+          scrollPercent
+        )}%`;
+      }
+
+      window.addEventListener("scroll", updateScrollIndicator);
+    </script>
   </body>
 </html>
