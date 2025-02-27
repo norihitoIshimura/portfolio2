@@ -98,7 +98,7 @@ h5 {
 .opening.moveFin {
   display: block;
   margin-top: 0;
-  top: 38px;
+  top: 49px;
   left: 36px;
   width: 85px;
   transform: none;
@@ -144,7 +144,7 @@ h5 {
   justify-content: center;
   align-items: center;
   width: auto;
-  height: 100vh;
+  height: 200vh;
   background-color: #fff;
   text-decoration: none;
   outline: none;
@@ -169,7 +169,6 @@ h5 {
 .container header .title {
   position: relative;
   z-index: 1;
-  margin-top: -11px;
 }
 .container header .title h2 {
   font-size: 5rem;
