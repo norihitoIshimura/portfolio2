@@ -1128,7 +1128,7 @@ h5 {
 }
 
 @media screen and (max-width: 1000px) and (max-height: 480px) and (orientation: landscape) {
-  .tonbo {
+  body {
     position: fixed;
     top: 0;
     z-index: 10 !important;
@@ -1167,7 +1167,14 @@ h5 {
   top: 50%;
   transform: translateY(-50%);
   left: 5px;
+  cursor: pointer;
 }
+@media screen and (max-width: 1000px) and (max-height: 480px) and (orientation: landscape) {
+  .video_play {
+    display: none;
+  }
+}
+
 .video_play::before {
   position: absolute;
   top: 50%;
@@ -1196,6 +1203,11 @@ h5 {
   transform: translateY(-50%);
   left: 5px;
   background-color: #fff;
+}
+@media screen and (max-width: 1000px) and (max-height: 480px) and (orientation: landscape) {
+  .video_pause {
+    display: none;
+  }
 }
 
 .video_pause::before,
