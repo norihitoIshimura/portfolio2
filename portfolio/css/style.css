@@ -1162,18 +1162,12 @@ h5 {
   border-radius: 50%;
   color: #333;
   position: fixed;
+  background-color: #fff;
   z-index: 999;
-  bottom: 52px;
+  top: 50%;
+  transform: translateY(-50%);
   left: 5px;
 }
-@media screen and (max-width: 580px) {
-  .video_play {
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #fff;
-  }
-}
-
 .video_play::before {
   position: absolute;
   top: 50%;
@@ -1198,15 +1192,10 @@ h5 {
   cursor: pointer;
   position: fixed;
   z-index: 999;
-  bottom: 52px;
+  top: 50%;
+  transform: translateY(-50%);
   left: 5px;
   background-color: #fff;
-}
-@media screen and (max-width: 580px) {
-  .video_pause {
-    top: 50%;
-    transform: translateY(-50%);
-  }
 }
 
 .video_pause::before,
