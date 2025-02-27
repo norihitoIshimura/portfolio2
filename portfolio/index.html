@@ -741,29 +741,28 @@
         // ランダムに動かす関数（波打つように動かす）
         function randomize() {
           const spans = document.querySelectorAll("#inMyHead h4 span");
-          const randomIndex = Math.floor(Math.random() * spans.length);
+          const randomIndex = Math.floor(Math.random() * spans.length); // ランダムで1つの要素を選択
           const windowWidth = window.innerWidth;
-          const marginValue = windowWidth <= 580 ? 50 : 0;
+          const marginValue = windowWidth <= 580 ? 50 : 0; // 580px以下なら-70px、それ以上なら0px
 
           spans.forEach((span, index) => {
             const waveEffect =
-              Math.sin((index / spans.length) * Math.PI * 2) * 10;
+              Math.sin((index / spans.length) * Math.PI * 2) * 10; // 波の揺れ
 
             gsap.to(span, {
-              x: Math.random() * 120 - 10 - marginValue, // x軸でランダムに移動
-              y: Math.random() * 120 - 10 + waveEffect, // y軸でランダムに移動
-              rotation: Math.random() * 40 - 10, // ランダム回転
+              x: () => Math.random() * 120 - 10 - marginValue, // x軸でランダムに移動
+              y: () => Math.random() * 120 - 10 + waveEffect, // y軸でランダムに移動
+              rotation: () => Math.random() * 40 - 10, // ランダム回転
               scale:
                 index === randomIndex ? 1 + (Math.random() * 1.9 - 0.15) : 1, // 選ばれた1つだけランダムでスケール
               opacity: index === randomIndex ? 1.0 : 0.3, // 選ばれた1つだけ濃く、それ以外は0.3
-              duration: 2.8, // アニメーションの時間
-              ease: "power1.inOut",
-              overwrite: true, // 古いアニメーションを適切に削除
+              duration: 3, // アニメーションの時間
+              ease: "power1.inOut", // アニメーションの緩やかさ
             });
           });
 
-          // 3秒後に次のアニメーションを開始（setTimeoutよりスムーズなGSAPの機能を使用）
-          gsap.delayedCall(3, randomize);
+          // 定期的にランダムな動きを更新
+          setTimeout(randomize, 3000); // 3秒毎に動きがリセット
         }
 
         // 初回のランダムアニメーションを開始
