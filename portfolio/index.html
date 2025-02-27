@@ -744,7 +744,6 @@
           const randomIndex = Math.floor(Math.random() * spans.length);
           const windowWidth = window.innerWidth;
           const marginValue = windowWidth <= 580 ? 50 : 0;
-          let animationsCompleted = 0;
 
           spans.forEach((span, index) => {
             const waveEffect =
@@ -757,17 +756,14 @@
               scale:
                 index === randomIndex ? 1 + (Math.random() * 1.9 - 0.15) : 1, // 選ばれた1つだけランダムでスケール
               opacity: index === randomIndex ? 1.0 : 0.3, // 選ばれた1つだけ濃く、それ以外は0.3
-              duration: 3,
+              duration: 2.8, // アニメーションの時間
               ease: "power1.inOut",
-              overwrite: "auto",
-              onComplete: () => {
-                animationsCompleted++;
-                if (animationsCompleted === spans.length) {
-                  setTimeout(randomize, 3000); // すべてのアニメーションが終わったら再実行
-                }
-              },
+              overwrite: true, // 古いアニメーションを適切に削除
             });
           });
+
+          // 3秒後に次のアニメーションを開始（setTimeoutよりスムーズなGSAPの機能を使用）
+          gsap.delayedCall(3, randomize);
         }
 
         // 初回のランダムアニメーションを開始
