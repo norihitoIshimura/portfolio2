@@ -1204,7 +1204,7 @@ h5 {
   position: relative;
   width: 1.5rem;
   height: 1.5rem;
-  border: 0.1rem solid currentColor;
+  border: 0.1rem solid #bbb;
   border-radius: 50%;
   color: #333;
   cursor: pointer;
