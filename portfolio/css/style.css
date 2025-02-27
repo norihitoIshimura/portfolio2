@@ -13,6 +13,7 @@ body {
   font-style: normal;
   font-size: 1.6rem;
   transition: background-color 0.3s; /* 変更を滑らかに */
+  margin-top: 37px;
 }
 
 h1,
@@ -168,6 +169,7 @@ h5 {
 .container header .title {
   position: relative;
   z-index: 1;
+  margin-top: -11px;
 }
 .container header .title h2 {
   font-size: 5rem;
@@ -227,7 +229,7 @@ h5 {
 }
 @media screen and (max-width: 580px) {
   .container header .timeMessage {
-    font-size: 1rem;
+    font-size: 1.1rem;
     justify-content: center;
   }
 }
@@ -1155,6 +1157,7 @@ h5 {
   width: 1.5rem;
   height: 1.5rem;
   border: 0.1rem solid currentColor;
+  border-radius: 50%;
   color: #333;
   position: fixed;
   z-index: 999;
@@ -1163,8 +1166,8 @@ h5 {
 }
 @media screen and (max-width: 580px) {
   .video_play {
-    top: 37%;
-    transform: translateY(-37%);
+    top: 50%;
+    transform: translateY(-50%);
     background-color: #fff;
   }
 }
@@ -1188,17 +1191,19 @@ h5 {
   width: 1.5rem;
   height: 1.5rem;
   border: 0.1rem solid currentColor;
+  border-radius: 50%;
   color: #333;
   cursor: pointer;
   position: fixed;
   z-index: 999;
   bottom: 52px;
   left: 5px;
+  background-color: #fff;
 }
 @media screen and (max-width: 580px) {
   .video_pause {
-    top: 37%;
-    transform: translateY(-37%);
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 
