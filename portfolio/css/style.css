@@ -13,6 +13,7 @@ body {
   font-style: normal;
   font-size: 1.6rem;
   transition: background-color 0.3s; /* 変更を滑らかに */
+  margin-top: 37px;
 }
 
 h1,
