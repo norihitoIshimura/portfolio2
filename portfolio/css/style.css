@@ -226,6 +226,8 @@ h5 {
   width: 3rem;
   text-align: center;
   z-index: 999;
+  font-variant: tabular-nums;
+  font-feature-settings: "tnum";
 }
 @media screen and (max-width: 580px) {
   .container header .timeMessage {
