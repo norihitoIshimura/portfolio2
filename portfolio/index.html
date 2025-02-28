@@ -308,6 +308,12 @@
       <div class="popup-inner"></div>
     </div>
     <script>
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+      window.scrollTo(0, 0);
+    </script>
+    <script>
       document.addEventListener("DOMContentLoaded", () => {
         // VivusでSVGアニメーションを作成
         // 初回判定用フラグ
@@ -1139,12 +1145,6 @@
       }
 
       window.addEventListener("scroll", updateScrollIndicator);
-    </script>
-    <script>
-      if ("scrollRestoration" in history) {
-        history.scrollRestoration = "manual";
-      }
-      window.scrollTo(0, 0);
     </script>
   </body>
 </html>
