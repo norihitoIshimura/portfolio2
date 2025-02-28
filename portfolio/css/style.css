@@ -89,6 +89,7 @@ h5 {
 .logoBox.move {
   animation: moveToTopRight2 2s forwards; /* アニメーション適用 */
   text-decoration: none;
+  -webkit-text-decoration: none;
 }
 
 @keyframes moveToTopRight2 {
@@ -148,6 +149,7 @@ h5 {
   height: 200vh;
   background-color: #fff;
   text-decoration: none;
+  -webkit-text-decoration: none;
   outline: none;
   display: block;
 }
