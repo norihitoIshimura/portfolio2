@@ -415,9 +415,9 @@ h5 {
   .container .box #inMyHead {
     font-size: 18rem;
     writing-mode: vertical-rl;
-    letter-spacing: 4rem;
+    letter-spacing: 3rem;
     height: 100vh;
-    margin-top: -100px;
+    margin-top: -90px;
   }
 }
 .container .box span {
@@ -578,6 +578,7 @@ h5 {
   display: flex;
   justify-content: space-around;
   margin-bottom: 40px;
+  flex-wrap: wrap;
 }
 @media screen and (max-width: 580px) {
   .container #about .about .aboutFlex {
@@ -588,13 +589,14 @@ h5 {
   }
 }
 .container #about .about .aboutFlex .leftBox {
-  width: 900px;
+  width: 55%;
   text-align: justify;
 }
 @media screen and (max-width: 580px) {
   .container #about .about .aboutFlex .leftBox {
     width: auto;
     margin-bottom: 40px;
+    order: 1;
   }
 }
 .container #about .about .aboutFlex .leftBox h5 {
@@ -620,7 +622,7 @@ h5 {
   }
 }
 .container #about .about .aboutFlex .rightBox {
-  width: 500px;
+  width: 40%;
   font-size: 1.6rem;
   display: flex;
   flex-direction: column;
@@ -630,6 +632,7 @@ h5 {
 @media screen and (max-width: 580px) {
   .container #about .about .aboutFlex .rightBox {
     width: 100%;
+    order: 3;
   }
 }
 .container #about .about .aboutFlex .rightBox img {
@@ -648,10 +651,23 @@ h5 {
 }
 .container #about .about .aboutFlex .rightBox .about-box {
   border-bottom: 1px solid #333;
+  text-align: left;
+  border-right: 1px solid #333;
+}
+@media screen and (max-width: 580px) {
+  .container #about .about .aboutFlex .rightBox .about-box {
+    font-size: 1.4rem;
+  }
 }
 .container #about .about .aboutFlex .rightBox .about-box div {
-  margin-bottom: 20px;
+  padding-bottom: 20px;
   line-height: 1.7;
+}
+@media screen and (max-width: 580px) {
+  .container #about .about .aboutFlex .rightBox .about-box div {
+    padding-bottom: 10px;
+    line-height: 1.5;
+  }
 }
 .container #about .about .aboutFlex .rightBox .about-box div dt {
   font-weight: bold;
@@ -660,51 +676,60 @@ h5 {
 .container #about .about .aboutFlex .rightBox .about-box div dd {
   margin-left: 120px;
   padding-left: 10px;
-  border-left: 1px solid #333;
 }
-.container #about .about .aboutFlex2 {
+@media screen and (max-width: 580px) {
+  .container #about .about .aboutFlex .rightBox .about-box div dd {
+    margin-left: 100px;
+    padding-right: 10px;
+  }
+}
+.container #about .about .aboutFlex .aboutFlex2 {
   display: flex;
   width: 70%;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto 40px;
+  margin: 40px auto;
 }
 @media screen and (max-width: 580px) {
-  .container #about .about .aboutFlex2 {
+  .container #about .about .aboutFlex .aboutFlex2 {
     flex-direction: column;
     width: auto;
-    padding: 10px;
+    padding: 10px 0;
+    order: 2;
+    margin-top: 10px;
   }
 }
-.container #about .about .aboutFlex2 img {
+.container #about .about .aboutFlex .aboutFlex2 img {
   width: 20%;
 }
 @media screen and (max-width: 580px) {
-  .container #about .about .aboutFlex2 img {
+  .container #about .about .aboutFlex .aboutFlex2 img {
     width: 40%;
     margin-bottom: 20px;
   }
 }
-.container #about .about .aboutFlex2 .aboutCc {
+.container #about .about .aboutFlex .aboutFlex2 .aboutCc {
   margin-left: 5%;
-  font-size: 2rem;
+  font-size: 3rem;
   width: 75%;
-  line-height: 1.4;
+  line-height: 1.7;
   text-align: justify;
 }
-.container #about .about .aboutFlex2 .aboutCc span {
-  font-size: 3rem;
-}
 @media screen and (max-width: 580px) {
-  .container #about .about .aboutFlex2 .aboutCc span {
-    font-size: 2rem;
-  }
-}
-@media screen and (max-width: 580px) {
-  .container #about .about .aboutFlex2 .aboutCc {
-    font-size: 1.6rem;
+  .container #about .about .aboutFlex .aboutFlex2 .aboutCc {
+    font-size: 2.2rem;
     width: auto;
     margin-left: 0;
+  }
+}
+.container #about .about .aboutFlex .aboutFlex2 .aboutCc span {
+  font-size: 2rem;
+  padding-left: 2rem;
+}
+@media screen and (max-width: 580px) {
+  .container #about .about .aboutFlex .aboutFlex2 .aboutCc span {
+    font-size: 1.6rem;
+    padding-left: 0;
   }
 }
 .container #about .design {
@@ -784,7 +809,7 @@ h5 {
 }
 @media screen and (max-width: 580px) {
   .container #about .design .workFlex {
-    padding: 20px;
+    padding: 0;
     flex-direction: column;
     margin: 0 auto 20px;
   }
@@ -871,10 +896,24 @@ h5 {
   width: 100%;
   font-size: 1.6rem;
   border-bottom: 1px solid #333;
+  border-left: 1px solid #333;
+  text-align: left;
+}
+@media screen and (max-width: 580px) {
+  .container #about .cording .contentBox .skillBox {
+    font-size: 1.4rem;
+  }
 }
 .container #about .cording .contentBox .skillBox div {
   margin-bottom: 20px;
   line-height: 1.7;
+  padding-left: 10px;
+}
+@media screen and (max-width: 580px) {
+  .container #about .cording .contentBox .skillBox div {
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
 }
 .container #about .cording .contentBox .skillBox div dt {
   font-weight: bold;
@@ -887,8 +926,6 @@ h5 {
 }
 .container #about .cording .contentBox .skillBox div dd {
   margin-left: 180px;
-  padding-left: 10px;
-  border-left: 1px solid #333;
 }
 @media screen and (max-width: 580px) {
   .container #about .cording .contentBox .skillBox div dd {
