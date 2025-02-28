@@ -88,6 +88,7 @@ h5 {
 
 .logoBox.move {
   animation: moveToTopRight2 2s forwards; /* アニメーション適用 */
+  text-decoration: none;
 }
 
 @keyframes moveToTopRight2 {
@@ -426,12 +427,12 @@ h5 {
 }
 .container .area {
   overflow: hidden;
-  margin: 0 -10px 60px;
+  margin: 0 -10px 300px;
   width: calc(100% + 20px);
 }
 @media screen and (max-width: 580px) {
   .container .area {
-    margin-bottom: 120px;
+    margin-bottom: 150px;
   }
 }
 .container .wrap {
@@ -453,11 +454,11 @@ h5 {
 }
 .container .worksMore {
   width: calc(75% + 20px);
-  margin: 0 auto 240px;
+  margin: 0 auto 300px;
 }
 @media screen and (max-width: 580px) {
   .container .worksMore {
-    margin: 0 -10px 120px;
+    margin: 0 -10px 150px;
     width: calc(100% + 20px);
   }
 }
@@ -547,7 +548,7 @@ h5 {
   width: 80%;
   margin: 0 auto;
   padding: 40px;
-  padding-bottom: 240px;
+  padding-bottom: 300px;
   font-family: "Zen Kaku Gothic New", serif;
   font-weight: 400;
 }
@@ -555,7 +556,7 @@ h5 {
   .container #about .about {
     width: auto;
     font-size: 2.6rem;
-    margin: 0 auto 90px;
+    margin: 0 auto 150px;
     padding: 0px;
     text-align: justify;
   }
@@ -737,7 +738,7 @@ h5 {
   width: 80%;
   margin: 0 auto;
   padding: 40px;
-  padding-bottom: 240px;
+  padding-bottom: 300px;
   font-family: "Zen Kaku Gothic New", serif;
   font-weight: 400;
 }
@@ -745,7 +746,7 @@ h5 {
   .container #about .design {
     width: auto;
     font-size: 2.6rem;
-    margin: 0 auto 90px;
+    margin: 0 auto 150px;
     padding: 0px;
     text-align: justify;
   }
