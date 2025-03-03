@@ -52,6 +52,8 @@
           </svg>
         </a>
       </h1>
+      <button id="skipButton">SKIP</button>
+
       <header>
         <div class="title">
           <h2>NOI</h2>
@@ -474,26 +476,21 @@
           }
         };
 
-        const setupIllustAnimation = () => {
-          gsap.set(".illust", { opacity: 0, x: "100vw", rotation: 180 });
-
-          gsap.to(".illust", {
-            scrollTrigger: {
-              trigger: "#workImgS", // トリガー
-              start: "top 90%", // トリガーが画面の90%地点で開始
-              end: "top 50%", // トリガーが画面の10%地点で終了
-              scrub: 1, // スクロールとアニメーションが連動する
-              markers: false, // デバッグ用マーカー表示
-            },
-            x: 0, // 画面内にスライドイン
-            rotation: 360, // 360度回転
-            opacity: 1, // 完全に表示
-          });
-        };
-
         if (isFirstVisit) {
+          // スキップボタンを表示する
+          const skipButton = document.getElementById("skipButton");
+          if (skipButton) {
+            skipButton.style.display = "block"; // ボタンを表示
+            skipButton.addEventListener("click", function () {
+              sessionStorage.setItem("isFirstVisit", "false");
+              location.reload(); // ページをリロード
+            });
+          }
+
           document.documentElement.style.overflowY = "hidden"; // 縦スクロールを無効化
           hideElements(); // 初回訪問時の非表示
+
+          // Vivusのアニメーションを開始
           new Vivus(
             "logo",
             {
@@ -545,11 +542,19 @@
                 setupIllustAnimation(); // 初回のイラスト回転
               }, mainActivateDelay + 1200);
 
+              // Vivusアニメーション終了後にスキップボタンを非表示
+              setTimeout(() => {
+                if (skipButton) {
+                  skipButton.style.display = "none"; // Vivus終了後に非表示
+                }
+              }, mainActivateDelay); // アニメーション終了後に非表示 (時間調整)
+
               sessionStorage.setItem("isFirstVisit", "false");
             }
           );
         } else {
-          showElements(); // それ以降は常に表示
+          // それ以降は常に表示
+          showElements();
           if (logoContainer) {
             logoContainer.classList.add("moveFin");
           }
