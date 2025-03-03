@@ -308,6 +308,7 @@
       <div class="popup-inner"></div>
     </div>
     <script>
+      // リロード時の位置をトップに
       if ("scrollRestoration" in history) {
         history.scrollRestoration = "manual";
       }
@@ -323,337 +324,96 @@
         const logoContainer = document.getElementById("logo-container");
         logoContainer.style.display = "block";
 
-        if (isFirstVisit) {
-          // 初回訪問時のVivusアニメーション
-          document.documentElement.style.overflowY = "hidden"; // 縦スクロールを無効化
+        // 共通処理
+        const hideElements = () => {
           document
             .querySelectorAll(
               ".nav, .timeMessage,.cmyk,.tonbo,.video_play,.scroll-indicator"
             )
-            .forEach((el) => (el.style.visibility = "hidden")); //トンボ ul など非表示
-          new Vivus(
-            "logo",
-            {
-              type: "delayed",
-              duration: 150,
-              forceRender: false,
-            },
-            function (obj) {
-              obj.el.classList.add("done");
+            .forEach((el) => (el.style.visibility = "hidden"));
+        };
 
-              const moveDelay = 1000;
-              const mainActivateDelay = 3000;
-
-              setTimeout(() => {
-                if (logoContainer) {
-                  logoContainer.classList.add("moveFin");
-                }
-              }, moveDelay);
-
-              setTimeout(() => {
-                const logoBox = document.querySelector(".logoBox");
-                if (logoBox) {
-                  logoBox.style.height = "0";
-                  logoBox.style.transition = "height 1.2s ease";
-                }
-              }, mainActivateDelay);
-
-              setTimeout(() => {
-                //小物の時差表示
-                document.documentElement.style.overflowY = "auto"; // 縦スクロールを有効化
-                document
-                  .querySelectorAll(
-                    ".nav, .timeMessage,.cmyk,.tonbo,.video_play,.scroll-indicator"
-                  )
-                  .forEach((el) => (el.style.visibility = "visible")); //トンボ
-                //  初回のテキスト横スクロール
-                const container = document.getElementById("container");
-                const text = document.getElementById("text");
-
-                // 画面幅が580px以下かどうかを判定
-                const isMobile =
-                  window.matchMedia("(max-width: 580px)").matches;
-
-                if (!isMobile && container && text) {
-                  // PC時の横スクロールアニメーション
-                  const textWidth = text.scrollWidth;
-                  const viewportWidth = window.innerWidth;
-                  const horizontalScrollDistance = textWidth - viewportWidth;
-
-                  ScrollTrigger.create({
-                    trigger: container,
-                    start: "top top",
-                    end: () => `+=${horizontalScrollDistance * 2}`,
-                    pin: true,
-                    scrub: true,
-                    onUpdate: (self) => {
-                      gsap.to(text, {
-                        x: -self.progress * horizontalScrollDistance,
-                        ease: "none",
-                        duration: 0.1,
-                      });
-                    },
-                  });
-                } else if (text) {
-                  // スマホ時もスクロールトリガーを使用
-                  const textContent = text.textContent.trim(); // 余計な空白を削除
-                  text.innerHTML = ""; // 元のテキストをクリア
-
-                  // 一文字ずつ <span> で囲み、text に追加
-                  const spans = textContent.split("").map((char, i) => {
-                    const span = document.createElement("span");
-                    span.textContent = char;
-                    span.style.display = "inline-block"; // GSAP適用のため
-                    span.style.opacity = "0"; // 初期状態を非表示
-                    span.style.position = "relative"; // アニメーション時の基準
-                    text.appendChild(span);
-                    return span;
-                  });
-
-                  // 一括でスライドインのアニメーションを設定
-                  gsap.to(spans, {
-                    scrollTrigger: {
-                      trigger: container,
-                      start: "top 100%", // 80%の位置から開始
-                      end: "bottom 20%", // 20%の位置で終了
-                      scrub: true, // スクロールに応じて動く
-                    },
-                    opacity: 1,
-                    stagger: 0.05, // 文字ごとに遅延をつける
-                    x: 0, // 画面内に戻す
-                    ease: "power3.out",
-                    duration: 1,
-                  });
-
-                  // 各文字を左右交互にスライドイン
-                  gsap.fromTo(
-                    spans,
-                    {
-                      x: (i) => (i % 2 === 0 ? "-80vw" : "80vw"), // 偶数: 左から、奇数: 右から
-                    },
-                    {
-                      x: "0%",
-                      duration: 1,
-                      stagger: 0.1,
-                      scrollTrigger: {
-                        trigger: container,
-                        start: "top 100%",
-                        end: "bottom 0%",
-                        scrub: true,
-                      },
-                      ease: "power3.out",
-                    }
-                  );
-                }
-              }, mainActivateDelay + 1200); // 1秒後に実行
-
-              setTimeout(() => {
-                //初回の横スクロール画像
-                const area = document.querySelector(".js-area");
-                const wrap = document.querySelector(".js-wrap");
-                const items = document.querySelectorAll(".js-item");
-                const num = items.length;
-
-                if (area && wrap && items.length > 0) {
-                  gsap.registerPlugin(ScrollTrigger);
-
-                  if (window.innerWidth <= 580) {
-                    // ✅ スマホ時のアニメーション
-                    gsap.set(wrap, {
-                      width: "100%",
-                      // overflowX: "hidden",
-                    });
-
-                    gsap.set(items, {
-                      width: "100%",
-                      opacity: 0,
-                      y: 50,
-                      rotate: -45, // 初期状態で少し回転
-                      scale: 0.1, // 初期状態で少し縮小
-                      height: 33 + "vh",
-                      marginBottom: 20 + "px",
-                    });
-
-                    items.forEach((item, index) => {
-                      gsap.to(item, {
-                        opacity: 1,
-                        y: 0,
-                        rotate: 0, // ゆっくり回転しながら元の角度へ
-                        scale: 1, // 拡大しながら通常サイズへ
-                        duration: 1.2, // 少し長めのアニメーション
-                        delay: index * 0.3, // 順番に出てくるように遅延
-                        ease: "power2.out",
-                        // markers: true,
-                        scrollTrigger: {
-                          trigger: item,
-                          start: "top 95%", // 85% 画面内に入ったら発火
-                          toggleActions: "play none none reverse",
-                        },
-                      });
-                    });
-                  } else {
-                    // ✅ PCの横スクロールアニメーション
-                    gsap.set(wrap, {
-                      width: num * 100 + "%",
-                      marginLeft: "10%",
-                    });
-                    gsap.set(items, { width: 100 / num + "%" });
-
-                    gsap.to(items, {
-                      xPercent: -100 * (num - 1) - 10, // 30% 分のズレを補正
-                      // xPercent: -100 * (num - 1),
-                      ease: "none",
-                      scrollTrigger: {
-                        trigger: area,
-                        start: "top",
-                        end: "+=6000",
-                        pin: true,
-                        scrub: true,
-                      },
-                    });
-                  }
-                }
-              }, mainActivateDelay + 1200);
-
-              // 初期状態を明示的に設定
-              gsap.set(".illust", { opacity: 0, x: "100vw", rotation: 180 });
-
-              setTimeout(() => {
-                //初回のイラスト回転
-                gsap.to(".illust", {
-                  scrollTrigger: {
-                    trigger: "#workImgS", // トリガー
-                    start: "top 90%", // トリガーが画面の90%地点で開始
-                    end: "top 50%", // トリガーが画面の10%地点で終了
-                    scrub: 1, // スクロールとアニメーションが連動する
-                    markers: false, // デバッグ用マーカー表示
-                  },
-                  x: 0, // 画面内にスライドイン
-                  rotation: 360, // 360度回転
-                  opacity: 1, // 完全に表示
-                  // duration: 3, // アニメーション時間
-                });
-              }, mainActivateDelay + 1200);
-
-              setTimeout(() => {
-                //初回のイラスト回転
-                gsap.to(".illust", {
-                  scrollTrigger: {
-                    trigger: "#workImgS", // トリガー
-                    start: "top 90%", // トリガーが画面の90%地点で開始
-                    end: "top 50%", // トリガーが画面の10%地点で終了
-                    scrub: 1, // スクロールとアニメーションが連動する
-                    markers: false, // デバッグ用マーカー表示
-                  },
-                  x: 0, // 画面内にスライドイン
-                  rotation: 360, // 360度回転
-                  opacity: 1, // 完全に表示
-                  // duration: 3, // アニメーション時間
-                });
-              }, mainActivateDelay + 1200);
-
-              // 初回訪問後にフラグをセット
-              sessionStorage.setItem("isFirstVisit", "false");
-            }
-          );
-        } else {
+        const showElements = () => {
           document
             .querySelectorAll(
               ".nav, .timeMessage,.cmyk,.tonbo,.video_play,.scroll-indicator"
             )
             .forEach((el) => (el.style.visibility = "visible"));
-          // それ以降はGSAPのアニメーションを常に動作させる
-          const logoContainer = document.getElementById("logo-container");
-          if (logoContainer) {
-            logoContainer.classList.add("moveFin");
-          }
+        };
 
-          const logoBox = document.querySelector(".logoBox");
-          if (logoBox) {
-            logoBox.style.height = "0";
-            // logoBox.style.transition = "height 1.2s ease";
-          }
+        const setupHorizontalScroll = (container, text) => {
+          const textWidth = text.scrollWidth;
+          const viewportWidth = window.innerWidth;
+          const horizontalScrollDistance = textWidth - viewportWidth;
 
-          //  2回目のテキスト横スクロール
-          const container = document.getElementById("container");
-          const text = document.getElementById("text");
+          ScrollTrigger.create({
+            trigger: container,
+            start: "top top",
+            end: () => `+=${horizontalScrollDistance * 2}`,
+            pin: true,
+            scrub: true,
+            onUpdate: (self) => {
+              gsap.to(text, {
+                x: -self.progress * horizontalScrollDistance,
+                ease: "none",
+                duration: 0.1,
+              });
+            },
+          });
+        };
 
-          // 画面幅が580px以下かどうかを判定
-          const isMobile = window.matchMedia("(max-width: 580px)").matches;
+        const setupMobileTextAnimation = (container, text) => {
+          const textContent = text.textContent.trim(); // 余計な空白を削除
+          text.innerHTML = ""; // 元のテキストをクリア
 
-          if (!isMobile && container && text) {
-            // PC時の横スクロールアニメーション
-            const textWidth = text.scrollWidth;
-            const viewportWidth = window.innerWidth;
-            const horizontalScrollDistance = textWidth - viewportWidth;
+          // 一文字ずつ <span> で囲み、text に追加
+          const spans = textContent.split("").map((char, i) => {
+            const span = document.createElement("span");
+            span.textContent = char;
+            span.style.display = "inline-block"; // GSAP適用のため
+            span.style.opacity = "0"; // 初期状態を非表示
+            span.style.position = "relative"; // アニメーション時の基準
+            text.appendChild(span);
+            return span;
+          });
 
-            ScrollTrigger.create({
+          // 一括でスライドインのアニメーションを設定
+          gsap.to(spans, {
+            scrollTrigger: {
               trigger: container,
-              start: "top top",
-              end: () => `+=${horizontalScrollDistance * 2}`,
-              pin: true,
-              scrub: true,
-              onUpdate: (self) => {
-                gsap.to(text, {
-                  x: -self.progress * horizontalScrollDistance,
-                  ease: "none",
-                  duration: 0.1,
-                });
-              },
-            });
-          } else if (text) {
-            // スマホ時もスクロールトリガーを使用
-            const textContent = text.textContent.trim(); // 余計な空白を削除
-            text.innerHTML = ""; // 元のテキストをクリア
+              start: "top 100%", // 80%の位置から開始
+              end: "bottom 20%", // 20%の位置で終了
+              scrub: true, // スクロールに応じて動く
+            },
+            opacity: 1,
+            stagger: 0.05, // 文字ごとに遅延をつける
+            x: 0, // 画面内に戻す
+            ease: "power3.out",
+            duration: 1,
+          });
 
-            // 一文字ずつ <span> で囲み、text に追加
-            const spans = textContent.split("").map((char, i) => {
-              const span = document.createElement("span");
-              span.textContent = char;
-              span.style.display = "inline-block"; // GSAP適用のため
-              span.style.opacity = "0"; // 初期状態を非表示
-              span.style.position = "relative"; // アニメーション時の基準
-              text.appendChild(span);
-              return span;
-            });
-
-            // 一括でスライドインのアニメーションを設定
-            gsap.to(spans, {
+          // 各文字を左右交互にスライドイン
+          gsap.fromTo(
+            spans,
+            {
+              x: (i) => (i % 2 === 0 ? "-100vw" : "100vw"), // 偶数: 左から、奇数: 右から
+            },
+            {
+              x: "0%",
+              duration: 1,
+              stagger: 0.1,
               scrollTrigger: {
                 trigger: container,
-                start: "top 100%", // 80%の位置から開始
-                end: "bottom 20%", // 20%の位置で終了
-                scrub: true, // スクロールに応じて動く
+                start: "top 100%",
+                end: "bottom 20%",
+                scrub: true,
               },
-              opacity: 1,
-              stagger: 0.05, // 文字ごとに遅延をつける
-              x: 0, // 画面内に戻す
               ease: "power3.out",
-              duration: 1,
-            });
+            }
+          );
+        };
 
-            // 各文字を左右交互にスライドイン
-            gsap.fromTo(
-              spans,
-              {
-                x: (i) => (i % 2 === 0 ? "-100vw" : "100vw"), // 偶数: 左から、奇数: 右から
-              },
-              {
-                x: "0%",
-                duration: 1,
-                stagger: 0.1,
-                scrollTrigger: {
-                  trigger: container,
-                  start: "top 100%",
-                  end: "bottom 20%",
-                  scrub: true,
-                },
-                ease: "power3.out",
-              }
-            );
-          }
-
-          //２回目の横スクロール画像
+        const setupHorizontalScrollImage = () => {
           const area = document.querySelector(".js-area");
           const wrap = document.querySelector(".js-wrap");
           const items = document.querySelectorAll(".js-item");
@@ -666,7 +426,6 @@
               // ✅ スマホ時のアニメーション
               gsap.set(wrap, {
                 width: "100%",
-                // overflowX: "hidden",
               });
 
               gsap.set(items, {
@@ -702,7 +461,6 @@
 
               gsap.to(items, {
                 xPercent: -100 * (num - 1) - 10, // 30% 分のズレを補正
-                // xPercent: -100 * (num - 1),
                 ease: "none",
                 scrollTrigger: {
                   trigger: area,
@@ -714,8 +472,9 @@
               });
             }
           }
+        };
 
-          //２回目のイラスト回転
+        const setupIllustAnimation = () => {
           gsap.set(".illust", { opacity: 0, x: "100vw", rotation: 180 });
 
           gsap.to(".illust", {
@@ -729,11 +488,93 @@
             x: 0, // 画面内にスライドイン
             rotation: 360, // 360度回転
             opacity: 1, // 完全に表示
-            // duration: 3, // アニメーション時間
           });
+        };
+
+        if (isFirstVisit) {
+          document.documentElement.style.overflowY = "hidden"; // 縦スクロールを無効化
+          hideElements(); // 初回訪問時の非表示
+          new Vivus(
+            "logo",
+            {
+              type: "delayed",
+              duration: 150,
+              forceRender: false,
+            },
+            function (obj) {
+              obj.el.classList.add("done");
+
+              const moveDelay = 1000;
+              const mainActivateDelay = 3000;
+
+              setTimeout(() => {
+                if (logoContainer) {
+                  logoContainer.classList.add("moveFin");
+                }
+              }, moveDelay);
+
+              setTimeout(() => {
+                const logoBox = document.querySelector(".logoBox");
+                if (logoBox) {
+                  logoBox.style.height = "0";
+                  logoBox.style.transition = "height 1.2s ease";
+                }
+              }, mainActivateDelay);
+
+              setTimeout(() => {
+                document.documentElement.style.overflowY = "auto"; // 縦スクロールを有効化
+                showElements(); // 初回の表示
+                const container = document.getElementById("container");
+                const text = document.getElementById("text");
+
+                const isMobile =
+                  window.matchMedia("(max-width: 580px)").matches;
+
+                if (!isMobile && container && text) {
+                  setupHorizontalScroll(container, text);
+                } else if (text) {
+                  setupMobileTextAnimation(container, text);
+                }
+              }, mainActivateDelay + 1200); // 1秒後に実行
+
+              setTimeout(() => {
+                setupHorizontalScrollImage(); // 初回の横スクロール画像
+              }, mainActivateDelay + 1200);
+
+              setTimeout(() => {
+                setupIllustAnimation(); // 初回のイラスト回転
+              }, mainActivateDelay + 1200);
+
+              sessionStorage.setItem("isFirstVisit", "false");
+            }
+          );
+        } else {
+          showElements(); // それ以降は常に表示
+          if (logoContainer) {
+            logoContainer.classList.add("moveFin");
+          }
+
+          const logoBox = document.querySelector(".logoBox");
+          if (logoBox) {
+            logoBox.style.height = "0";
+          }
+
+          const container = document.getElementById("container");
+          const text = document.getElementById("text");
+          const isMobile = window.matchMedia("(max-width: 580px)").matches;
+
+          if (!isMobile && container && text) {
+            setupHorizontalScroll(container, text);
+          } else if (text) {
+            setupMobileTextAnimation(container, text);
+          }
+
+          setupHorizontalScrollImage(); // ２回目の横スクロール画像
+          setupIllustAnimation(); // ２回目のイラスト回転
         }
       });
-
+    </script>
+    <script>
       // 文字のランダム
       document.addEventListener("DOMContentLoaded", () => {
         const text = document.querySelector("#inMyHead h4");
