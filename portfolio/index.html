@@ -476,6 +476,28 @@
           }
         };
 
+        // イラストアニメーションの処理
+        function setupIllustAnimation() {
+          const illust = document.querySelector(".illust");
+
+          if (illust) {
+            gsap.set(illust, { opacity: 0, x: "100vw", rotation: 180 });
+
+            gsap.to(illust, {
+              scrollTrigger: {
+                trigger: "#workImgS",
+                start: "top 90%",
+                end: "top 50%",
+                scrub: 1,
+                markers: false,
+              },
+              x: 0,
+              rotation: 360,
+              opacity: 1,
+            });
+          }
+        }
+
         if (isFirstVisit) {
           // スキップボタンを表示する
           const skipButton = document.getElementById("skipButton");
