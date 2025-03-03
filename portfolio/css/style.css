@@ -1279,4 +1279,23 @@ h5 {
 
 .video_pause::after {
   left: 60%;
+}
+
+#skipButton {
+  display: none; /* 初期状態で非表示 */
+  position: absolute; /* ボタンを画面に配置 */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: none;
+  margin-top: 20vh;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  z-index: 10;
+}
+
+#skipButton.visible {
+  display: block; /* visibleクラスが追加されるとボタンが表示 */
 }/*# sourceMappingURL=style.css.map */
