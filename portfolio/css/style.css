@@ -422,9 +422,9 @@ h5 {
   white-space: nowrap;
   text-align: center;
   font-family: "Zen Kaku Gothic New", serif;
-  font-weight: 700;
   font-style: normal;
   letter-spacing: 8rem;
+  margin-bottom: 90px;
 }
 @media screen and (max-width: 580px) {
   .container .box #inMyHead {
@@ -433,11 +433,23 @@ h5 {
     letter-spacing: 3rem;
     height: 100vh;
     margin-top: -90px;
+    margin-bottom: 0;
   }
 }
 .container .box span {
   position: relative;
   display: inline-block;
+}
+.container .box p {
+  text-align: center;
+  font-size: 15rem;
+  color: #777;
+  white-space: wrap;
+}
+@media screen and (max-width: 580px) {
+  .container .box p {
+    font-size: 5rem;
+  }
 }
 .container .area {
   overflow: hidden;
